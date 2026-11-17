@@ -4,11 +4,9 @@
 
 # AEmulator
 
-*Based on the original [SENSES emulator](https://github.com/Istratii-tech/SENSES)*
-
 **Старі прошивки Android — HTC Sense, TouchWiz, MIUI, AOSP — на сучасному телефоні. Без root і без ПК.**
 
-[![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/uxazu/aemulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](../../LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/uxazu/aemulator) [![Forum](https://img.shields.io/badge/Forum-aeforum-FF6D00?style=for-the-badge&logo=discourse&logoColor=white)](https://aeforum.uxazuu.space/) [![Telegram](https://img.shields.io/badge/Telegram-channel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/aemulatorofficial) [![Website](https://img.shields.io/badge/site-aemulator.gt.tc-111?style=for-the-badge)](https://aemulator.gt.tc)
+[![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/hesan20082021/AEmulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](../../LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/hesan20082021/AEmulator)
 
 [🇬🇧 English](../../README.md) · [🇷🇺 Русский](README.ru.md) · **🇺🇦 Українська** · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇧🇷 Português](README.pt-BR.md) · [🇮🇹 Italiano](README.it.md) · [🇵🇱 Polski](README.pl.md) · [🇹🇷 Türkçe](README.tr.md) · [🇸🇦 العربية](README.ar.md) · [🇮🇷 فارسی](README.fa.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇮🇩 Indonesia](README.id.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-CN.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
@@ -27,20 +25,10 @@ AEmulator завантажує справжню систему Android 2.3–17 
 - Інтерфейс Material 3 Expressive 18 мовами
 - Безкоштовно й з відкритим кодом (GPL-3.0)
 
-## 📱 Список прошивок
-
-Список перевірених прошивок — зі статусами, нотатками й посиланнями на завантаження — тепер на нашому форумі. Там можна ділитися результатами, ставити запитання й знаходити нові образи.
-
-<div align="center">
-
-<a href="https://aeforum.uxazuu.space/"><img src="https://img.shields.io/badge/%D0%92%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%20%D1%84%D0%BE%D1%80%D1%83%D0%BC-aeforum.uxazuu.space-FF6D00?style=for-the-badge&logo=discourse&logoColor=white" height="44" alt="Форум"/></a>
-
-</div>
-
 ## 🚀 Швидкий старт
 
-1. Завантажте APK з [Releases](https://github.com/uxazu/aemulator/releases) і встановіть.
-2. Знайдіть прошивку на [форумі](https://aeforum.uxazuu.space/) і завантажте її на телефон.
+1. Завантажте APK з [Releases](https://github.com/hesan20082021/AEmulator/releases) і встановіть.
+2. Завантажте файл прошивки на телефон.
 3. Відкрийте AEmulator → **Додати прошивку** й виберіть файл. Імпорт триває кілька хвилин.
 4. Натисніть **Запустити**. Перше завантаження довше: система оптимізує застосунки.
 5. Меню ⋮ — гучність, кнопка живлення й журнал; кнопка ⚙️ — налаштування й мова.
@@ -60,28 +48,10 @@ AEmulator завантажує справжню систему Android 2.3–17 
 Потрібні JDK 17, Android SDK 36 і NDK r28. Гостьові бібліотеки збираються скриптами `native/*/build.sh`.
 
 ```bash
-git clone https://github.com/uxazu/aemulator.git
-cd aemulator
+git clone https://github.com/hesan20082021/AEmulator.git
+cd AEmulator
 ./gradlew assembleRelease
 ```
-
-## 🙏 Подяки
-
-AEmulator виріс з емуляторів HTC Desire HD та HTC One M7 [першого автора](https://t.me/istratii_tech1) — без його рушія проєкту б не було.
-
-## 💙 Підтримати проєкт
-
-Якщо AEmulator повернув вам улюблений телефон, можна підтримати розробку:
-
-- 💳 [dalink.to/uxazu](https://dalink.to/uxazu)
-
-## 🔗 Посилання
-
-- 🌐 Сайт: [aemulator.gt.tc](https://aemulator.gt.tc)
-- 💬 Форум: [aeforum.uxazuu.space](https://aeforum.uxazuu.space/)
-- 📣 Telegram-канал: [@aemulatorofficial](https://t.me/aemulatorofficial)
-- 👤 Автор: [uxazu](https://github.com/uxazu)
-- 🧬 Перший автор: [t.me/istratii_tech1](https://t.me/istratii_tech1)
 
 ## 📄 Ліцензія
 

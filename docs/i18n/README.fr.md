@@ -4,11 +4,9 @@
 
 # AEmulator
 
-*Based on the original [SENSES emulator](https://github.com/Istratii-tech/SENSES)*
-
 **Les anciennes ROM Android — HTC Sense, TouchWiz, MIUI, AOSP — sur un téléphone moderne. Sans root, sans PC.**
 
-[![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/uxazu/aemulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](../../LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/uxazu/aemulator) [![Forum](https://img.shields.io/badge/Forum-aeforum-FF6D00?style=for-the-badge&logo=discourse&logoColor=white)](https://aeforum.uxazuu.space/) [![Telegram](https://img.shields.io/badge/Telegram-channel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/aemulatorofficial) [![Website](https://img.shields.io/badge/site-aemulator.gt.tc-111?style=for-the-badge)](https://aemulator.gt.tc)
+[![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/hesan20082021/AEmulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](../../LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/hesan20082021/AEmulator)
 
 [🇬🇧 English](../../README.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇩🇪 Deutsch](README.de.md) · **🇫🇷 Français** · [🇪🇸 Español](README.es.md) · [🇧🇷 Português](README.pt-BR.md) · [🇮🇹 Italiano](README.it.md) · [🇵🇱 Polski](README.pl.md) · [🇹🇷 Türkçe](README.tr.md) · [🇸🇦 العربية](README.ar.md) · [🇮🇷 فارسی](README.fa.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇮🇩 Indonesia](README.id.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-CN.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
@@ -27,20 +25,10 @@ AEmulator démarre un vrai système Android 2.3–17 directement depuis un fichi
 - Interface Material 3 Expressive en 18 langues
 - Gratuit et open source (GPL-3.0)
 
-## 📱 Liste des ROM
-
-La liste des ROM vérifiées — avec états, notes et liens de téléchargement — se trouve sur notre forum. Partagez-y vos résultats, posez vos questions et trouvez de nouvelles images.
-
-<div align="center">
-
-<a href="https://aeforum.uxazuu.space/"><img src="https://img.shields.io/badge/Ouvrir%20le%20forum-aeforum.uxazuu.space-FF6D00?style=for-the-badge&logo=discourse&logoColor=white" height="44" alt="Forum"/></a>
-
-</div>
-
 ## 🚀 Démarrage rapide
 
-1. Téléchargez l’APK depuis [Releases](https://github.com/uxazu/aemulator/releases) et installez-le.
-2. Trouvez une ROM sur le [forum](https://aeforum.uxazuu.space/) et téléchargez-la sur le téléphone.
+1. Téléchargez l’APK depuis [Releases](https://github.com/hesan20082021/AEmulator/releases) et installez-le.
+2. Téléchargez un fichier de ROM sur le téléphone.
 3. Ouvrez AEmulator → **Ajouter une ROM** et choisissez le fichier. L’import prend quelques minutes.
 4. Appuyez sur **Démarrer**. Le premier démarrage est plus long : le système optimise les applis.
 5. Menu ⋮ pour le volume, le bouton marche et le journal ; ⚙️ ouvre les paramètres et la langue.
@@ -60,28 +48,10 @@ Sous Android 2.3–4.4, chaque processus invité tourne sous un QEMU en mode uti
 Il faut JDK 17, Android SDK 36 et NDK r28. Les bibliothèques invitées se compilent avec `native/*/build.sh`.
 
 ```bash
-git clone https://github.com/uxazu/aemulator.git
-cd aemulator
+git clone https://github.com/hesan20082021/AEmulator.git
+cd AEmulator
 ./gradlew assembleRelease
 ```
-
-## 🙏 Remerciements
-
-AEmulator est né des émulateurs HTC Desire HD et HTC One M7 de [l’auteur d’origine](https://t.me/istratii_tech1) — sans son moteur, ce projet n’existerait pas.
-
-## 💙 Soutenir le projet
-
-Si AEmulator vous a rendu un téléphone que vous aimiez, vous pouvez soutenir le développement :
-
-- 💳 [dalink.to/uxazu](https://dalink.to/uxazu)
-
-## 🔗 Liens
-
-- 🌐 Site web: [aemulator.gt.tc](https://aemulator.gt.tc)
-- 💬 Forum: [aeforum.uxazuu.space](https://aeforum.uxazuu.space/)
-- 📣 Chaîne Telegram: [@aemulatorofficial](https://t.me/aemulatorofficial)
-- 👤 Auteur: [uxazu](https://github.com/uxazu)
-- 🧬 Auteur d’origine: [t.me/istratii_tech1](https://t.me/istratii_tech1)
 
 ## 📄 Licence
 

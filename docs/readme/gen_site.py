@@ -24,7 +24,6 @@ def main():
         t = dict(T[code])
         t["steps"] = [md(x.format(repo=data.REPO)) for x in t["steps"]]
         t["feats"] = [md(x) for x in t["feats"]]
-        t["credits_text"] = md(t["credits_text"].format(orig=data.ORIGINAL))
         t["build_text"] = md(t["build_text"])
         out[code] = t
     payload = {"langs": [{"code": c, "name": n, "flag": f} for c, n, f in data.LANGS], "rtl": ["ar", "fa"], "t": out}

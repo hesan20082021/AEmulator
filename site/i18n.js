@@ -114,7 +114,7 @@ window.AEMU_I18N = {
     "Free and open source (GPL-3.0)"
    ],
    "fw_title": "Firmware list",
-   "fw_intro": "The list of firmware that has been checked — with statuses, notes and download links — lives on our forum. Share your results there, ask questions and find new images.",
+   "fw_intro": "",
    "c_device": "Device",
    "c_android": "Android",
    "c_skin": "Skin",
@@ -140,8 +140,8 @@ window.AEMU_I18N = {
    "fw_legal": "Firmware files belong to their manufacturers. Links point to the manufacturers’ servers or public archives; AEmulator does not ship any firmware.",
    "start_title": "Quick start",
    "steps": [
-    "Download the APK from <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> and install it.",
-    "Find a firmware on the <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">forum</a> and download it to your phone.",
+    "Download the APK from <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> and install it.",
+    "Download a firmware file to your phone.",
     "Open AEmulator → <b>Add firmware</b> and pick the file. Import takes a few minutes.",
     "Press <b>Start</b>. The first boot is slower: the system optimises its apps.",
     "Use the ⋮ menu for volume, power button and logs; the ⚙️ button opens app settings and language."
@@ -157,7 +157,7 @@ window.AEMU_I18N = {
    "how_title": "How it works",
    "how_text": "On Android 2.3–4.4 each guest process runs under a patched user-mode QEMU; on 5.0–17 the firmware’s own arm64 programs run natively, with one engine kernel per Android version catching their system calls. A binder daemon replaces the kernel driver, a GL bridge forwards OpenGL ES calls to the phone’s GPU, and small guest libraries (audio HAL, audio policy wrapper, LD_PRELOAD shim) adapt vendor code to the emulator. The importer reads the firmware, finds the init scripts in its boot image and builds a start plan for system services.",
    "credits_title": "Credits",
-   "credits_text": "AEmulator grew out of the HTC Desire HD and HTC One M7 emulators by <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">the original author</a> — their engine made this project possible.",
+   "credits_text": "AEmulator grew out of the HTC Desire HD and HTC One M7 emulators by the original author — their engine made this project possible.",
    "support_title": "Support the project",
    "support_text": "If AEmulator brought back a phone you loved, you can support development:",
    "links_title": "Links",
@@ -167,8 +167,8 @@ window.AEMU_I18N = {
    "l_orig": "Original author",
    "license_title": "License",
    "license_text": "GPL-3.0. Android, trademarks and firmware belong to their owners.",
-   "forum": "Forum",
-   "forum_open": "Open the forum"
+   "forum": "",
+   "forum_open": ""
   },
   "ru": {
    "s_fw": "проверенных прошивок",
@@ -187,7 +187,7 @@ window.AEMU_I18N = {
     "Бесплатно и с открытым кодом (GPL-3.0)"
    ],
    "fw_title": "Список прошивок",
-   "fw_intro": "Список проверенных прошивок — со статусами, заметками и ссылками на скачивание — теперь на нашем форуме. Там же можно делиться результатами, задавать вопросы и находить новые образы.",
+   "fw_intro": "",
    "c_device": "Устройство",
    "c_android": "Android",
    "c_skin": "Оболочка",
@@ -213,8 +213,8 @@ window.AEMU_I18N = {
    "fw_legal": "Файлы прошивок принадлежат производителям. Ссылки ведут на серверы производителей или публичные архивы; AEmulator не содержит прошивок.",
    "start_title": "Быстрый старт",
    "steps": [
-    "Скачайте APK из <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> и установите.",
-    "Найдите прошивку на <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">форуме</a> и скачайте её на телефон.",
+    "Скачайте APK из <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> и установите.",
+    "Скачайте файл прошивки на телефон.",
     "Откройте AEmulator → <b>Добавить прошивку</b> и выберите файл. Импорт занимает несколько минут.",
     "Нажмите <b>Запустить</b>. Первая загрузка дольше: система оптимизирует приложения.",
     "Меню ⋮ — громкость, кнопка питания и журнал; кнопка ⚙️ — настройки приложения и язык."
@@ -230,7 +230,7 @@ window.AEMU_I18N = {
    "how_title": "Как это устроено",
    "how_text": "На Android 2.3–4.4 каждый процесс гостя работает под доработанным QEMU в режиме пользователя; на 5.0–17 собственные arm64-программы прошивки работают напрямую, а их системные вызовы перехватывает отдельное ядро движка для каждой версии Android. Демон binder заменяет драйвер ядра, GL-мост передаёт вызовы OpenGL ES на GPU телефона, а небольшие гостевые библиотеки (звуковой HAL, обёртка audio policy, прослойка LD_PRELOAD) подгоняют код производителей под эмулятор. Импортёр читает прошивку, находит init-скрипты в boot-образе и строит план запуска системных служб.",
    "credits_title": "Благодарности",
-   "credits_text": "AEmulator вырос из эмуляторов HTC Desire HD и HTC One M7 <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">первого автора</a> — без его движка проекта бы не было.",
+   "credits_text": "AEmulator вырос из эмуляторов HTC Desire HD и HTC One M7 первого автора — без его движка проекта бы не было.",
    "support_title": "Поддержать проект",
    "support_text": "Если AEmulator вернул вам любимый телефон, можно поддержать разработку:",
    "links_title": "Ссылки",
@@ -240,8 +240,8 @@ window.AEMU_I18N = {
    "l_orig": "Первый автор",
    "license_title": "Лицензия",
    "license_text": "GPL-3.0. Android, товарные знаки и прошивки принадлежат их владельцам.",
-   "forum": "Форум",
-   "forum_open": "Открыть форум"
+   "forum": "",
+   "forum_open": ""
   },
   "uk": {
    "s_fw": "перевірених прошивок",
@@ -260,7 +260,7 @@ window.AEMU_I18N = {
     "Безкоштовно й з відкритим кодом (GPL-3.0)"
    ],
    "fw_title": "Список прошивок",
-   "fw_intro": "Список перевірених прошивок — зі статусами, нотатками й посиланнями на завантаження — тепер на нашому форумі. Там можна ділитися результатами, ставити запитання й знаходити нові образи.",
+   "fw_intro": "",
    "c_device": "Пристрій",
    "c_android": "Android",
    "c_skin": "Оболонка",
@@ -286,8 +286,8 @@ window.AEMU_I18N = {
    "fw_legal": "Файли прошивок належать виробникам. Посилання ведуть на сервери виробників або публічні архіви; AEmulator не містить прошивок.",
    "start_title": "Швидкий старт",
    "steps": [
-    "Завантажте APK з <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> і встановіть.",
-    "Знайдіть прошивку на <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">форумі</a> і завантажте її на телефон.",
+    "Завантажте APK з <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> і встановіть.",
+    "Завантажте файл прошивки на телефон.",
     "Відкрийте AEmulator → <b>Додати прошивку</b> й виберіть файл. Імпорт триває кілька хвилин.",
     "Натисніть <b>Запустити</b>. Перше завантаження довше: система оптимізує застосунки.",
     "Меню ⋮ — гучність, кнопка живлення й журнал; кнопка ⚙️ — налаштування й мова."
@@ -303,7 +303,7 @@ window.AEMU_I18N = {
    "how_title": "Як це влаштовано",
    "how_text": "На Android 2.3–4.4 кожен процес гостя працює під доопрацьованим QEMU в режимі користувача; на 5.0–17 власні arm64-програми прошивки працюють напряму, а їхні системні виклики перехоплює окреме ядро рушія для кожної версії Android. Демон binder замінює драйвер ядра, GL-міст передає виклики OpenGL ES на GPU телефона, а невеликі гостьові бібліотеки (звуковий HAL, обгортка audio policy, прошарок LD_PRELOAD) підлаштовують код виробників під емулятор. Імпортер читає прошивку, знаходить init-скрипти в boot-образі й будує план запуску системних служб.",
    "credits_title": "Подяки",
-   "credits_text": "AEmulator виріс з емуляторів HTC Desire HD та HTC One M7 <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">першого автора</a> — без його рушія проєкту б не було.",
+   "credits_text": "AEmulator виріс з емуляторів HTC Desire HD та HTC One M7 першого автора — без його рушія проєкту б не було.",
    "support_title": "Підтримати проєкт",
    "support_text": "Якщо AEmulator повернув вам улюблений телефон, можна підтримати розробку:",
    "links_title": "Посилання",
@@ -313,8 +313,8 @@ window.AEMU_I18N = {
    "l_orig": "Перший автор",
    "license_title": "Ліцензія",
    "license_text": "GPL-3.0. Android, торговельні марки й прошивки належать їхнім власникам.",
-   "forum": "Форум",
-   "forum_open": "Відкрити форум"
+   "forum": "",
+   "forum_open": ""
   },
   "de": {
    "s_fw": "getestete Firmwares",
@@ -333,7 +333,7 @@ window.AEMU_I18N = {
     "Kostenlos und quelloffen (GPL-3.0)"
    ],
    "fw_title": "Firmware-Liste",
-   "fw_intro": "Die Liste geprüfter Firmwares — mit Status, Hinweisen und Download-Links — findest du in unserem Forum. Dort kannst du Ergebnisse teilen, Fragen stellen und neue Images entdecken.",
+   "fw_intro": "",
    "c_device": "Gerät",
    "c_android": "Android",
    "c_skin": "Oberfläche",
@@ -359,8 +359,8 @@ window.AEMU_I18N = {
    "fw_legal": "Firmware-Dateien gehören ihren Herstellern. Links führen zu Herstellerservern oder öffentlichen Archiven; AEmulator enthält keine Firmware.",
    "start_title": "Schnellstart",
    "steps": [
-    "APK unter <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> herunterladen und installieren.",
-    "Such dir im <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">Forum</a> eine Firmware aus und lade sie aufs Handy.",
+    "APK unter <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> herunterladen und installieren.",
+    "Lade eine Firmware-Datei aufs Handy.",
     "AEmulator öffnen → <b>Firmware hinzufügen</b> und die Datei wählen. Der Import dauert einige Minuten.",
     "<b>Starten</b> drücken. Der erste Start dauert länger: Das System optimiert Apps.",
     "Menü ⋮ für Lautstärke, Ein/Aus und Protokoll; ⚙️ öffnet Einstellungen und Sprache."
@@ -376,7 +376,7 @@ window.AEMU_I18N = {
    "how_title": "So funktioniert es",
    "how_text": "Unter Android 2.3–4.4 läuft jeder Gastprozess unter einem angepassten User-Mode-QEMU; unter 5.0–17 laufen die arm64-Programme der Firmware nativ, und ein eigener Engine-Kernel pro Android-Version fängt ihre Systemaufrufe ab. Ein Binder-Daemon ersetzt den Kernel-Treiber, eine GL-Brücke leitet OpenGL-ES-Aufrufe an die GPU weiter, und kleine Gast-Bibliotheken (Audio-HAL, Audio-Policy-Wrapper, LD_PRELOAD-Shim) passen Herstellercode an den Emulator an. Der Importer liest die Firmware, findet die Init-Skripte im Boot-Image und erstellt einen Startplan für die Systemdienste.",
    "credits_title": "Dank",
-   "credits_text": "AEmulator ist aus den Emulatoren für HTC Desire HD und HTC One M7 <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">des Originalautors</a> hervorgegangen — ohne seine Engine gäbe es dieses Projekt nicht.",
+   "credits_text": "AEmulator ist aus den Emulatoren für HTC Desire HD und HTC One M7 des Originalautors hervorgegangen — ohne seine Engine gäbe es dieses Projekt nicht.",
    "support_title": "Projekt unterstützen",
    "support_text": "Wenn AEmulator dir ein geliebtes Handy zurückgebracht hat, kannst du die Entwicklung unterstützen:",
    "links_title": "Links",
@@ -386,8 +386,8 @@ window.AEMU_I18N = {
    "l_orig": "Originalautor",
    "license_title": "Lizenz",
    "license_text": "GPL-3.0. Android, Marken und Firmware gehören ihren Inhabern.",
-   "forum": "Forum",
-   "forum_open": "Forum öffnen"
+   "forum": "",
+   "forum_open": ""
   },
   "fr": {
    "s_fw": "ROM testées",
@@ -406,7 +406,7 @@ window.AEMU_I18N = {
     "Gratuit et open source (GPL-3.0)"
    ],
    "fw_title": "Liste des ROM",
-   "fw_intro": "La liste des ROM vérifiées — avec états, notes et liens de téléchargement — se trouve sur notre forum. Partagez-y vos résultats, posez vos questions et trouvez de nouvelles images.",
+   "fw_intro": "",
    "c_device": "Appareil",
    "c_android": "Android",
    "c_skin": "Surcouche",
@@ -432,8 +432,8 @@ window.AEMU_I18N = {
    "fw_legal": "Les ROM appartiennent à leurs constructeurs. Les liens mènent aux serveurs des constructeurs ou à des archives publiques ; AEmulator ne contient aucune ROM.",
    "start_title": "Démarrage rapide",
    "steps": [
-    "Téléchargez l’APK depuis <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> et installez-le.",
-    "Trouvez une ROM sur le <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">forum</a> et téléchargez-la sur le téléphone.",
+    "Téléchargez l’APK depuis <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> et installez-le.",
+    "Téléchargez un fichier de ROM sur le téléphone.",
     "Ouvrez AEmulator → <b>Ajouter une ROM</b> et choisissez le fichier. L’import prend quelques minutes.",
     "Appuyez sur <b>Démarrer</b>. Le premier démarrage est plus long : le système optimise les applis.",
     "Menu ⋮ pour le volume, le bouton marche et le journal ; ⚙️ ouvre les paramètres et la langue."
@@ -449,7 +449,7 @@ window.AEMU_I18N = {
    "how_title": "Fonctionnement",
    "how_text": "Sous Android 2.3–4.4, chaque processus invité tourne sous un QEMU en mode utilisateur modifié ; sous 5.0–17, les programmes arm64 de la ROM tournent en natif et un noyau de moteur propre à chaque version d’Android intercepte leurs appels système. Un démon binder remplace le pilote du noyau, un pont GL transmet les appels OpenGL ES au GPU, et de petites bibliothèques invitées (HAL audio, enveloppe audio policy, shim LD_PRELOAD) adaptent le code constructeur à l’émulateur. L’importateur lit la ROM, trouve les scripts init dans l’image boot et construit le plan de démarrage des services.",
    "credits_title": "Remerciements",
-   "credits_text": "AEmulator est né des émulateurs HTC Desire HD et HTC One M7 de <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">l’auteur d’origine</a> — sans son moteur, ce projet n’existerait pas.",
+   "credits_text": "AEmulator est né des émulateurs HTC Desire HD et HTC One M7 de l’auteur d’origine — sans son moteur, ce projet n’existerait pas.",
    "support_title": "Soutenir le projet",
    "support_text": "Si AEmulator vous a rendu un téléphone que vous aimiez, vous pouvez soutenir le développement :",
    "links_title": "Liens",
@@ -459,8 +459,8 @@ window.AEMU_I18N = {
    "l_orig": "Auteur d’origine",
    "license_title": "Licence",
    "license_text": "GPL-3.0. Android, les marques et les ROM appartiennent à leurs propriétaires.",
-   "forum": "Forum",
-   "forum_open": "Ouvrir le forum"
+   "forum": "",
+   "forum_open": ""
   },
   "es": {
    "s_fw": "firmwares probados",
@@ -479,7 +479,7 @@ window.AEMU_I18N = {
     "Gratis y de código abierto (GPL-3.0)"
    ],
    "fw_title": "Lista de firmwares",
-   "fw_intro": "La lista de firmwares comprobados — con estados, notas y enlaces de descarga — está en nuestro foro. Allí puedes compartir resultados, preguntar y encontrar nuevas imágenes.",
+   "fw_intro": "",
    "c_device": "Dispositivo",
    "c_android": "Android",
    "c_skin": "Capa",
@@ -505,8 +505,8 @@ window.AEMU_I18N = {
    "fw_legal": "Los archivos de firmware pertenecen a sus fabricantes. Los enlaces llevan a servidores de fabricantes o archivos públicos; AEmulator no incluye firmware.",
    "start_title": "Inicio rápido",
    "steps": [
-    "Descarga el APK desde <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> e instálalo.",
-    "Busca un firmware en el <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">foro</a> y descárgalo en el teléfono.",
+    "Descarga el APK desde <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> e instálalo.",
+    "Descarga un archivo de firmware en el teléfono.",
     "Abre AEmulator → <b>Añadir firmware</b> y elige el archivo. La importación tarda unos minutos.",
     "Pulsa <b>Iniciar</b>. El primer arranque es más lento: el sistema optimiza las apps.",
     "Menú ⋮ para volumen, botón de encendido y registro; ⚙️ abre ajustes e idioma."
@@ -522,7 +522,7 @@ window.AEMU_I18N = {
    "how_title": "Cómo funciona",
    "how_text": "En Android 2.3–4.4 cada proceso invitado se ejecuta con un QEMU de modo usuario modificado; en 5.0–17 los programas arm64 del firmware se ejecutan de forma nativa y un núcleo del motor propio para cada versión de Android intercepta sus llamadas al sistema. Un demonio binder sustituye al controlador del kernel, un puente GL envía las llamadas OpenGL ES a la GPU y pequeñas bibliotecas invitadas (HAL de audio, envoltorio de audio policy, shim LD_PRELOAD) adaptan el código del fabricante al emulador. El importador lee el firmware, encuentra los scripts init en la imagen boot y crea el plan de arranque de los servicios.",
    "credits_title": "Créditos",
-   "credits_text": "AEmulator nació de los emuladores de HTC Desire HD y HTC One M7 del <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">autor original</a>; sin su motor este proyecto no existiría.",
+   "credits_text": "AEmulator nació de los emuladores de HTC Desire HD y HTC One M7 del autor original; sin su motor este proyecto no existiría.",
    "support_title": "Apoya el proyecto",
    "support_text": "Si AEmulator te devolvió un teléfono querido, puedes apoyar el desarrollo:",
    "links_title": "Enlaces",
@@ -532,8 +532,8 @@ window.AEMU_I18N = {
    "l_orig": "Autor original",
    "license_title": "Licencia",
    "license_text": "GPL-3.0. Android, las marcas y el firmware pertenecen a sus dueños.",
-   "forum": "Foro",
-   "forum_open": "Abrir el foro"
+   "forum": "",
+   "forum_open": ""
   },
   "pt-BR": {
    "s_fw": "firmwares testados",
@@ -552,7 +552,7 @@ window.AEMU_I18N = {
     "Gratuito e de código aberto (GPL-3.0)"
    ],
    "fw_title": "Lista de firmwares",
-   "fw_intro": "A lista de firmwares verificados — com status, notas e links de download — fica no nosso fórum. Lá você compartilha resultados, tira dúvidas e encontra novas imagens.",
+   "fw_intro": "",
    "c_device": "Aparelho",
    "c_android": "Android",
    "c_skin": "Interface",
@@ -578,8 +578,8 @@ window.AEMU_I18N = {
    "fw_legal": "Os firmwares pertencem às fabricantes. Os links levam aos servidores delas ou a arquivos públicos; o AEmulator não inclui firmwares.",
    "start_title": "Início rápido",
    "steps": [
-    "Baixe o APK em <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> e instale.",
-    "Encontre um firmware no <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">fórum</a> e baixe no celular.",
+    "Baixe o APK em <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> e instale.",
+    "Baixe um arquivo de firmware no celular.",
     "Abra o AEmulator → <b>Adicionar firmware</b> e escolha o arquivo. A importação leva alguns minutos.",
     "Toque em <b>Iniciar</b>. A primeira inicialização é mais lenta: o sistema otimiza os apps.",
     "Menu ⋮ para volume, botão liga/desliga e registro; ⚙️ abre configurações e idioma."
@@ -595,7 +595,7 @@ window.AEMU_I18N = {
    "how_title": "Como funciona",
    "how_text": "No Android 2.3–4.4 cada processo convidado roda num QEMU de modo usuário modificado; no 5.0–17 os programas arm64 do firmware rodam nativamente e um núcleo do motor próprio para cada versão do Android intercepta as chamadas de sistema. Um daemon binder substitui o driver do kernel, uma ponte GL envia as chamadas OpenGL ES para a GPU e pequenas bibliotecas (HAL de áudio, wrapper de audio policy, shim LD_PRELOAD) adaptam o código das fabricantes ao emulador. O importador lê o firmware, acha os scripts init na imagem boot e monta o plano de início dos serviços.",
    "credits_title": "Créditos",
-   "credits_text": "O AEmulator nasceu dos emuladores de HTC Desire HD e HTC One M7 do <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">autor original</a> — sem o motor dele este projeto não existiria.",
+   "credits_text": "O AEmulator nasceu dos emuladores de HTC Desire HD e HTC One M7 do autor original — sem o motor dele este projeto não existiria.",
    "support_title": "Apoie o projeto",
    "support_text": "Se o AEmulator trouxe de volta um celular querido, você pode apoiar o desenvolvimento:",
    "links_title": "Links",
@@ -605,8 +605,8 @@ window.AEMU_I18N = {
    "l_orig": "Autor original",
    "license_title": "Licença",
    "license_text": "GPL-3.0. Android, marcas e firmwares pertencem aos seus donos.",
-   "forum": "Fórum",
-   "forum_open": "Abrir o fórum"
+   "forum": "",
+   "forum_open": ""
   },
   "it": {
    "s_fw": "firmware testati",
@@ -625,7 +625,7 @@ window.AEMU_I18N = {
     "Gratuito e open source (GPL-3.0)"
    ],
    "fw_title": "Elenco firmware",
-   "fw_intro": "L’elenco dei firmware verificati — con stato, note e link per il download — è sul nostro forum. Lì puoi condividere i risultati, fare domande e trovare nuove immagini.",
+   "fw_intro": "",
    "c_device": "Dispositivo",
    "c_android": "Android",
    "c_skin": "Interfaccia",
@@ -651,8 +651,8 @@ window.AEMU_I18N = {
    "fw_legal": "I firmware appartengono ai produttori. I link portano ai server dei produttori o ad archivi pubblici; AEmulator non include firmware.",
    "start_title": "Avvio rapido",
    "steps": [
-    "Scarica l’APK da <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> e installalo.",
-    "Trova un firmware sul <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">forum</a> e scaricalo sul telefono.",
+    "Scarica l’APK da <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> e installalo.",
+    "Scarica un file firmware sul telefono.",
     "Apri AEmulator → <b>Aggiungi firmware</b> e scegli il file. L’importazione richiede qualche minuto.",
     "Premi <b>Avvia</b>. Il primo avvio è più lento: il sistema ottimizza le app.",
     "Menu ⋮ per volume, tasto di accensione e registro; ⚙️ apre impostazioni e lingua."
@@ -668,7 +668,7 @@ window.AEMU_I18N = {
    "how_title": "Come funziona",
    "how_text": "Su Android 2.3–4.4 ogni processo ospite gira sotto un QEMU user-mode modificato; su 5.0–17 i programmi arm64 del firmware girano in modo nativo e un kernel del motore dedicato a ogni versione di Android intercetta le loro chiamate di sistema. Un demone binder sostituisce il driver del kernel, un ponte GL inoltra le chiamate OpenGL ES alla GPU e piccole librerie ospiti (HAL audio, wrapper audio policy, shim LD_PRELOAD) adattano il codice dei produttori all’emulatore. L’importatore legge il firmware, trova gli script init nell’immagine boot e crea il piano di avvio dei servizi.",
    "credits_title": "Ringraziamenti",
-   "credits_text": "AEmulator nasce dagli emulatori HTC Desire HD e HTC One M7 dell’<a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">autore originale</a>; senza il suo motore questo progetto non esisterebbe.",
+   "credits_text": "AEmulator nasce dagli emulatori HTC Desire HD e HTC One M7 dell’autore originale; senza il suo motore questo progetto non esisterebbe.",
    "support_title": "Sostieni il progetto",
    "support_text": "Se AEmulator ti ha ridato un telefono amato, puoi sostenere lo sviluppo:",
    "links_title": "Link",
@@ -678,8 +678,8 @@ window.AEMU_I18N = {
    "l_orig": "Autore originale",
    "license_title": "Licenza",
    "license_text": "GPL-3.0. Android, i marchi e i firmware appartengono ai rispettivi proprietari.",
-   "forum": "Forum",
-   "forum_open": "Apri il forum"
+   "forum": "",
+   "forum_open": ""
   },
   "pl": {
    "s_fw": "przetestowanych firmware",
@@ -698,7 +698,7 @@ window.AEMU_I18N = {
     "Za darmo i open source (GPL-3.0)"
    ],
    "fw_title": "Lista firmware",
-   "fw_intro": "Lista sprawdzonych firmware — ze statusami, uwagami i linkami do pobrania — jest na naszym forum. Możesz tam dzielić się wynikami, zadawać pytania i znajdować nowe obrazy.",
+   "fw_intro": "",
    "c_device": "Urządzenie",
    "c_android": "Android",
    "c_skin": "Nakładka",
@@ -724,8 +724,8 @@ window.AEMU_I18N = {
    "fw_legal": "Pliki firmware należą do producentów. Linki prowadzą do serwerów producentów lub publicznych archiwów; AEmulator nie zawiera firmware.",
    "start_title": "Szybki start",
    "steps": [
-    "Pobierz APK z <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> i zainstaluj.",
-    "Znajdź firmware na <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">forum</a> i pobierz je na telefon.",
+    "Pobierz APK z <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> i zainstaluj.",
+    "Pobierz plik firmware na telefon.",
     "Otwórz AEmulator → <b>Dodaj firmware</b> i wybierz plik. Import trwa kilka minut.",
     "Naciśnij <b>Uruchom</b>. Pierwszy start trwa dłużej: system optymalizuje aplikacje.",
     "Menu ⋮ — głośność, przycisk zasilania i dziennik; ⚙️ — ustawienia i język."
@@ -741,7 +741,7 @@ window.AEMU_I18N = {
    "how_title": "Jak to działa",
    "how_text": "Na Androidzie 2.3–4.4 każdy proces gościa działa pod zmodyfikowanym QEMU w trybie użytkownika; na 5.0–17 programy arm64 z firmware działają natywnie, a ich wywołania systemowe przechwytuje osobne jądro silnika dla każdej wersji Androida. Demon binder zastępuje sterownik jądra, mostek GL przekazuje wywołania OpenGL ES do GPU, a małe biblioteki gościa (HAL audio, nakładka audio policy, shim LD_PRELOAD) dopasowują kod producentów do emulatora. Importer czyta firmware, znajduje skrypty init w obrazie boot i tworzy plan startu usług.",
    "credits_title": "Podziękowania",
-   "credits_text": "AEmulator wyrósł z emulatorów HTC Desire HD i HTC One M7 <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">pierwotnego autora</a> — bez jego silnika tego projektu by nie było.",
+   "credits_text": "AEmulator wyrósł z emulatorów HTC Desire HD i HTC One M7 pierwotnego autora — bez jego silnika tego projektu by nie było.",
    "support_title": "Wesprzyj projekt",
    "support_text": "Jeśli AEmulator przywrócił ci ulubiony telefon, możesz wesprzeć rozwój:",
    "links_title": "Linki",
@@ -751,8 +751,8 @@ window.AEMU_I18N = {
    "l_orig": "Pierwotny autor",
    "license_title": "Licencja",
    "license_text": "GPL-3.0. Android, znaki towarowe i firmware należą do ich właścicieli.",
-   "forum": "Forum",
-   "forum_open": "Otwórz forum"
+   "forum": "",
+   "forum_open": ""
   },
   "tr": {
    "s_fw": "test edilen yazılım",
@@ -771,7 +771,7 @@ window.AEMU_I18N = {
     "Ücretsiz ve açık kaynak (GPL-3.0)"
    ],
    "fw_title": "Yazılım listesi",
-   "fw_intro": "Test edilen yazılımların listesi — durumlar, notlar ve indirme bağlantılarıyla — forumumuzda. Orada sonuçlarını paylaşabilir, soru sorabilir ve yeni imajlar bulabilirsin.",
+   "fw_intro": "",
    "c_device": "Cihaz",
    "c_android": "Android",
    "c_skin": "Arayüz",
@@ -797,8 +797,8 @@ window.AEMU_I18N = {
    "fw_legal": "Yazılım dosyaları üreticilerine aittir. Bağlantılar üretici sunucularına veya herkese açık arşivlere gider; AEmulator hiçbir yazılım içermez.",
    "start_title": "Hızlı başlangıç",
    "steps": [
-    "APK’yı <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> sayfasından indirip kurun.",
-    "<a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">Forumda</a> bir yazılım bul ve telefonuna indir.",
+    "APK’yı <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> sayfasından indirip kurun.",
+    "Telefonuna bir yazılım dosyası indir.",
     "AEmulator’ı açın → <b>Yazılım ekle</b> ve dosyayı seçin. İçe aktarma birkaç dakika sürer.",
     "<b>Başlat</b>’a basın. İlk açılış daha uzundur: sistem uygulamaları optimize eder.",
     "⋮ menüsü: ses, güç düğmesi ve günlük; ⚙️ ayarları ve dili açar."
@@ -814,7 +814,7 @@ window.AEMU_I18N = {
    "how_title": "Nasıl çalışır",
    "how_text": "Android 2.3–4.4’te her misafir süreç değiştirilmiş kullanıcı kipi QEMU altında çalışır; 5.0–17’de yazılımın arm64 programları doğrudan çalışır ve her Android sürümü için ayrı bir motor çekirdeği sistem çağrılarını yakalar. Bir binder arka plan programı çekirdek sürücüsünün yerini alır, GL köprüsü OpenGL ES çağrılarını GPU’ya iletir, küçük misafir kütüphaneleri (ses HAL’i, audio policy sarmalayıcısı, LD_PRELOAD katmanı) üretici kodunu emülatöre uyarlar. İçe aktarıcı yazılımı okur, boot imajındaki init betiklerini bulur ve servislerin başlama planını kurar.",
    "credits_title": "Teşekkürler",
-   "credits_text": "AEmulator, <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">ilk geliştiricinin</a> HTC Desire HD ve HTC One M7 emülatörlerinden doğdu — onun motoru olmadan bu proje olmazdı.",
+   "credits_text": "AEmulator, ilk geliştiricinin HTC Desire HD ve HTC One M7 emülatörlerinden doğdu — onun motoru olmadan bu proje olmazdı.",
    "support_title": "Projeyi destekleyin",
    "support_text": "AEmulator sevdiğiniz bir telefonu geri getirdiyse geliştirmeyi destekleyebilirsiniz:",
    "links_title": "Bağlantılar",
@@ -824,8 +824,8 @@ window.AEMU_I18N = {
    "l_orig": "İlk geliştirici",
    "license_title": "Lisans",
    "license_text": "GPL-3.0. Android, markalar ve yazılımlar sahiplerine aittir.",
-   "forum": "Forum",
-   "forum_open": "Forumu aç"
+   "forum": "",
+   "forum_open": ""
   },
   "ar": {
    "s_fw": "برامج ثابتة مُختبرة",
@@ -844,7 +844,7 @@ window.AEMU_I18N = {
     "مجاني ومفتوح المصدر (GPL-3.0)"
    ],
    "fw_title": "قائمة البرامج الثابتة",
-   "fw_intro": "قائمة البرامج الثابتة المُختبرة — مع الحالة والملاحظات وروابط التنزيل — موجودة في منتدانا. شارك نتائجك هناك واطرح أسئلتك واعثر على صور جديدة.",
+   "fw_intro": "",
    "c_device": "الجهاز",
    "c_android": "أندرويد",
    "c_skin": "الواجهة",
@@ -870,8 +870,8 @@ window.AEMU_I18N = {
    "fw_legal": "ملفات البرامج الثابتة ملك لشركاتها. الروابط تشير إلى خوادم الشركات أو أرشيفات عامة؛ لا يتضمن AEmulator أي برامج ثابتة.",
    "start_title": "البدء السريع",
    "steps": [
-    "نزّل ملف APK من <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> وثبّته.",
-    "ابحث عن برنامج ثابت في <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">المنتدى</a> ونزّله إلى هاتفك.",
+    "نزّل ملف APK من <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> وثبّته.",
+    "نزّل ملف برنامج ثابت إلى هاتفك.",
     "افتح AEmulator ← <b>إضافة برنامج ثابت</b> واختر الملف. يستغرق الاستيراد بضع دقائق.",
     "اضغط <b>تشغيل</b>. الإقلاع الأول أبطأ: النظام يحسّن التطبيقات.",
     "القائمة ⋮ للصوت وزر التشغيل والسجل؛ وزر ⚙️ للإعدادات واللغة."
@@ -887,7 +887,7 @@ window.AEMU_I18N = {
    "how_title": "كيف يعمل",
    "how_text": "في أندرويد 2.3–4.4 تعمل كل عملية ضيف تحت QEMU معدّل بوضع المستخدم؛ وفي 5.0–17 تعمل برامج arm64 الخاصة بالبرنامج الثابت مباشرة، وتلتقط نواة محرك مستقلة لكل إصدار أندرويد استدعاءات النظام. يحل خادم binder محل برنامج تشغيل النواة، وينقل جسر GL استدعاءات OpenGL ES إلى معالج الرسومات، وتكيّف مكتبات صغيرة (HAL للصوت، وغلاف audio policy، وطبقة LD_PRELOAD) شفرة الشركات مع المحاكي. يقرأ المستورد البرنامج الثابت ويجد سكربتات init في صورة boot ويبني خطة تشغيل الخدمات.",
    "credits_title": "شكر وتقدير",
-   "credits_text": "نشأ AEmulator من محاكيات HTC Desire HD وHTC One M7 التي صنعها <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">المطوّر الأصلي</a>، ولولا محركه ما وُجد هذا المشروع.",
+   "credits_text": "نشأ AEmulator من محاكيات HTC Desire HD وHTC One M7 التي صنعها المطوّر الأصلي، ولولا محركه ما وُجد هذا المشروع.",
    "support_title": "ادعم المشروع",
    "support_text": "إن أعاد إليك AEmulator هاتفًا أحببته، يمكنك دعم التطوير:",
    "links_title": "روابط",
@@ -897,8 +897,8 @@ window.AEMU_I18N = {
    "l_orig": "المطوّر الأصلي",
    "license_title": "الترخيص",
    "license_text": "GPL-3.0. أندرويد والعلامات التجارية والبرامج الثابتة ملك لأصحابها.",
-   "forum": "المنتدى",
-   "forum_open": "افتح المنتدى"
+   "forum": "",
+   "forum_open": ""
   },
   "fa": {
    "s_fw": "فرم‌ویر آزموده",
@@ -917,7 +917,7 @@ window.AEMU_I18N = {
     "رایگان و متن‌باز (GPL-3.0)"
    ],
    "fw_title": "فهرست فرم‌ویرها",
-   "fw_intro": "فهرست فرم‌ویرهای آزموده — با وضعیت، یادداشت و پیوند دانلود — در انجمن ما است. آنجا نتایج خود را به اشتراک بگذارید، بپرسید و ایمیج‌های تازه پیدا کنید.",
+   "fw_intro": "",
    "c_device": "دستگاه",
    "c_android": "اندروید",
    "c_skin": "رابط",
@@ -943,8 +943,8 @@ window.AEMU_I18N = {
    "fw_legal": "فایل‌های فرم‌ویر متعلق به سازندگان‌اند. پیوندها به سرورهای سازندگان یا بایگانی‌های عمومی می‌روند؛ AEmulator هیچ فرم‌ویری ندارد.",
    "start_title": "شروع سریع",
    "steps": [
-    "فایل APK را از <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> دانلود و نصب کنید.",
-    "فرم‌ویری را در <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">انجمن</a> پیدا کنید و روی گوشی دانلود کنید.",
+    "فایل APK را از <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> دانلود و نصب کنید.",
+    "یک فایل فرم‌ویر را روی گوشی دانلود کنید.",
     "AEmulator را باز کنید ← <b>افزودن فرم‌ویر</b> و فایل را انتخاب کنید. درون‌ریزی چند دقیقه طول می‌کشد.",
     "<b>اجرا</b> را بزنید. بوت اول کندتر است: سیستم برنامه‌ها را بهینه می‌کند.",
     "منوی ⋮ برای صدا، دکمهٔ پاور و گزارش؛ دکمهٔ ⚙️ برای تنظیمات و زبان."
@@ -960,7 +960,7 @@ window.AEMU_I18N = {
    "how_title": "چگونه کار می‌کند",
    "how_text": "در اندروید 2.3 تا 4.4 هر فرایند مهمان زیر یک QEMU اصلاح‌شده در حالت کاربر اجرا می‌شود؛ در 5.0 تا 17 برنامه‌های arm64 خود فرم‌ویر مستقیم اجرا می‌شوند و یک هستهٔ موتور جداگانه برای هر نسخهٔ اندروید فراخوانی‌های سیستمی آن‌ها را می‌گیرد. سرویس binder جای درایور هسته را می‌گیرد، پل GL فراخوانی‌های OpenGL ES را به GPU می‌فرستد و کتابخانه‌های کوچک مهمان (HAL صوتی، پوشش audio policy، لایهٔ LD_PRELOAD) کد سازندگان را با شبیه‌ساز سازگار می‌کنند. درون‌ریز فرم‌ویر را می‌خواند، اسکریپت‌های init را در ایمیج boot پیدا می‌کند و برنامهٔ اجرای سرویس‌ها را می‌سازد.",
    "credits_title": "سپاس",
-   "credits_text": "AEmulator از شبیه‌سازهای HTC Desire HD و HTC One M7 ‏<a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">سازندهٔ نخست</a> رشد کرد — بدون موتور او این پروژه وجود نداشت.",
+   "credits_text": "AEmulator از شبیه‌سازهای HTC Desire HD و HTC One M7 ‏سازندهٔ نخست رشد کرد — بدون موتور او این پروژه وجود نداشت.",
    "support_title": "حمایت از پروژه",
    "support_text": "اگر AEmulator گوشی محبوبتان را برگرداند، می‌توانید از توسعه حمایت کنید:",
    "links_title": "پیوندها",
@@ -970,8 +970,8 @@ window.AEMU_I18N = {
    "l_orig": "سازندهٔ نخست",
    "license_title": "مجوز",
    "license_text": "GPL-3.0. اندروید، نشان‌های تجاری و فرم‌ویرها متعلق به صاحبانشان‌اند.",
-   "forum": "انجمن",
-   "forum_open": "باز کردن انجمن"
+   "forum": "",
+   "forum_open": ""
   },
   "hi": {
    "s_fw": "परखे गए फ़र्मवेयर",
@@ -990,7 +990,7 @@ window.AEMU_I18N = {
     "मुफ़्त और ओपन सोर्स (GPL-3.0)"
    ],
    "fw_title": "फ़र्मवेयर सूची",
-   "fw_intro": "परखे गए फ़र्मवेयर की सूची — स्थिति, नोट्स और डाउनलोड लिंक के साथ — हमारे फ़ोरम पर है। वहाँ अपने नतीजे साझा करें, सवाल पूछें और नई इमेज खोजें।",
+   "fw_intro": "",
    "c_device": "डिवाइस",
    "c_android": "Android",
    "c_skin": "स्किन",
@@ -1016,8 +1016,8 @@ window.AEMU_I18N = {
    "fw_legal": "फ़र्मवेयर फ़ाइलें उनके निर्माताओं की हैं। लिंक निर्माताओं के सर्वर या सार्वजनिक आर्काइव पर जाते हैं; AEmulator में कोई फ़र्मवेयर नहीं है।",
    "start_title": "जल्दी शुरुआत",
    "steps": [
-    "<a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> से APK डाउनलोड करके इंस्टॉल करें।",
-    "<a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">फ़ोरम</a> पर फ़र्मवेयर खोजें और फ़ोन पर डाउनलोड करें।",
+    "<a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> से APK डाउनलोड करके इंस्टॉल करें।",
+    "फ़र्मवेयर फ़ाइल फ़ोन पर डाउनलोड करें।",
     "AEmulator खोलें → <b>फ़र्मवेयर जोड़ें</b> और फ़ाइल चुनें। आयात में कुछ मिनट लगते हैं।",
     "<b>चलाएँ</b> दबाएँ। पहला बूट धीमा होता है: सिस्टम ऐप्स ऑप्टिमाइज़ करता है।",
     "⋮ मेनू में वॉल्यूम, पावर बटन और लॉग; ⚙️ से सेटिंग्स और भाषा।"
@@ -1033,7 +1033,7 @@ window.AEMU_I18N = {
    "how_title": "यह कैसे काम करता है",
    "how_text": "Android 2.3–4.4 पर हर गेस्ट प्रोसेस संशोधित यूज़र-मोड QEMU में चलता है; 5.0–17 पर फ़र्मवेयर के अपने arm64 प्रोग्राम सीधे चलते हैं, और हर Android संस्करण के लिए अलग इंजन कर्नेल उनके सिस्टम कॉल पकड़ता है। एक binder डेमन कर्नेल ड्राइवर की जगह लेता है, GL ब्रिज OpenGL ES कॉल GPU तक भेजता है, और छोटी गेस्ट लाइब्रेरी (ऑडियो HAL, audio policy रैपर, LD_PRELOAD शिम) निर्माताओं के कोड को एमुलेटर के अनुकूल बनाती हैं। इम्पोर्टर फ़र्मवेयर पढ़ता है, boot इमेज में init स्क्रिप्ट ढूँढता है और सेवाओं की शुरुआत की योजना बनाता है।",
    "credits_title": "आभार",
-   "credits_text": "AEmulator <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">मूल लेखक</a> के HTC Desire HD और HTC One M7 एमुलेटर से विकसित हुआ — उनके इंजन के बिना यह प्रोजेक्ट नहीं होता।",
+   "credits_text": "AEmulator मूल लेखक के HTC Desire HD और HTC One M7 एमुलेटर से विकसित हुआ — उनके इंजन के बिना यह प्रोजेक्ट नहीं होता।",
    "support_title": "प्रोजेक्ट का समर्थन करें",
    "support_text": "अगर AEmulator ने आपका प्यारा फ़ोन लौटा दिया, तो आप विकास में मदद कर सकते हैं:",
    "links_title": "लिंक",
@@ -1043,8 +1043,8 @@ window.AEMU_I18N = {
    "l_orig": "मूल लेखक",
    "license_title": "लाइसेंस",
    "license_text": "GPL-3.0। Android, ट्रेडमार्क और फ़र्मवेयर उनके स्वामियों के हैं।",
-   "forum": "फ़ोरम",
-   "forum_open": "फ़ोरम खोलें"
+   "forum": "",
+   "forum_open": ""
   },
   "id": {
    "s_fw": "firmware teruji",
@@ -1063,7 +1063,7 @@ window.AEMU_I18N = {
     "Gratis dan sumber terbuka (GPL-3.0)"
    ],
    "fw_title": "Daftar firmware",
-   "fw_intro": "Daftar firmware yang sudah diperiksa — lengkap dengan status, catatan, dan tautan unduhan — ada di forum kami. Bagikan hasilmu, bertanya, dan temukan image baru di sana.",
+   "fw_intro": "",
    "c_device": "Perangkat",
    "c_android": "Android",
    "c_skin": "Tampilan",
@@ -1089,8 +1089,8 @@ window.AEMU_I18N = {
    "fw_legal": "File firmware milik pabrikannya. Tautan mengarah ke server pabrikan atau arsip publik; AEmulator tidak menyertakan firmware.",
    "start_title": "Mulai cepat",
    "steps": [
-    "Unduh APK dari <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> lalu pasang.",
-    "Cari firmware di <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">forum</a> lalu unduh ke ponsel.",
+    "Unduh APK dari <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> lalu pasang.",
+    "Unduh file firmware ke ponsel.",
     "Buka AEmulator → <b>Tambah firmware</b> lalu pilih file. Impor butuh beberapa menit.",
     "Tekan <b>Mulai</b>. Boot pertama lebih lambat: sistem mengoptimalkan aplikasi.",
     "Menu ⋮ untuk volume, tombol daya, dan log; ⚙️ membuka setelan dan bahasa."
@@ -1106,7 +1106,7 @@ window.AEMU_I18N = {
    "how_title": "Cara kerja",
    "how_text": "Di Android 2.3–4.4 setiap proses tamu berjalan di QEMU mode pengguna yang dimodifikasi; di 5.0–17 program arm64 milik firmware berjalan langsung, dan kernel mesin tersendiri untuk tiap versi Android menangkap panggilan sistemnya. Daemon binder menggantikan driver kernel, jembatan GL meneruskan panggilan OpenGL ES ke GPU, dan pustaka tamu kecil (HAL audio, pembungkus audio policy, shim LD_PRELOAD) menyesuaikan kode pabrikan dengan emulator. Importir membaca firmware, menemukan skrip init di image boot, dan menyusun rencana mulai layanan.",
    "credits_title": "Kredit",
-   "credits_text": "AEmulator tumbuh dari emulator HTC Desire HD dan HTC One M7 karya <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">pembuat asli</a> — tanpa mesinnya proyek ini tidak akan ada.",
+   "credits_text": "AEmulator tumbuh dari emulator HTC Desire HD dan HTC One M7 karya pembuat asli — tanpa mesinnya proyek ini tidak akan ada.",
    "support_title": "Dukung proyek",
    "support_text": "Jika AEmulator mengembalikan ponsel kesayangan Anda, Anda bisa mendukung pengembangan:",
    "links_title": "Tautan",
@@ -1116,8 +1116,8 @@ window.AEMU_I18N = {
    "l_orig": "Pembuat asli",
    "license_title": "Lisensi",
    "license_text": "GPL-3.0. Android, merek dagang, dan firmware milik pemiliknya.",
-   "forum": "Forum",
-   "forum_open": "Buka forum"
+   "forum": "",
+   "forum_open": ""
   },
   "vi": {
    "s_fw": "firmware đã thử",
@@ -1136,7 +1136,7 @@ window.AEMU_I18N = {
     "Miễn phí và mã nguồn mở (GPL-3.0)"
    ],
    "fw_title": "Danh sách firmware",
-   "fw_intro": "Danh sách firmware đã kiểm tra — kèm trạng thái, ghi chú và liên kết tải — nằm trên diễn đàn của chúng tôi. Tại đó bạn có thể chia sẻ kết quả, đặt câu hỏi và tìm image mới.",
+   "fw_intro": "",
    "c_device": "Thiết bị",
    "c_android": "Android",
    "c_skin": "Giao diện",
@@ -1162,8 +1162,8 @@ window.AEMU_I18N = {
    "fw_legal": "Tệp firmware thuộc về nhà sản xuất. Liên kết dẫn tới máy chủ của hãng hoặc kho lưu trữ công khai; AEmulator không kèm firmware nào.",
    "start_title": "Bắt đầu nhanh",
    "steps": [
-    "Tải APK từ <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> và cài đặt.",
-    "Tìm firmware trên <a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">diễn đàn</a> và tải về điện thoại.",
+    "Tải APK từ <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> và cài đặt.",
+    "Tải một tệp firmware về điện thoại.",
     "Mở AEmulator → <b>Thêm firmware</b> và chọn tệp. Việc nhập mất vài phút.",
     "Nhấn <b>Chạy</b>. Lần khởi động đầu chậm hơn: hệ thống tối ưu ứng dụng.",
     "Menu ⋮ để chỉnh âm lượng, nút nguồn và nhật ký; ⚙️ mở cài đặt và ngôn ngữ."
@@ -1179,7 +1179,7 @@ window.AEMU_I18N = {
    "how_title": "Cách hoạt động",
    "how_text": "Trên Android 2.3–4.4 mỗi tiến trình khách chạy dưới QEMU chế độ người dùng đã chỉnh sửa; trên 5.0–17 các chương trình arm64 của firmware chạy trực tiếp, và một nhân động cơ riêng cho từng phiên bản Android bắt các lời gọi hệ thống của chúng. Một daemon binder thay cho driver nhân, cầu GL chuyển lệnh OpenGL ES tới GPU và các thư viện khách nhỏ (HAL âm thanh, lớp bọc audio policy, shim LD_PRELOAD) điều chỉnh mã của hãng cho hợp với trình giả lập. Trình nhập đọc firmware, tìm script init trong image boot và lập kế hoạch khởi động dịch vụ.",
    "credits_title": "Ghi công",
-   "credits_text": "AEmulator phát triển từ trình giả lập HTC Desire HD và HTC One M7 của <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">tác giả gốc</a> — không có engine của anh ấy thì không có dự án này.",
+   "credits_text": "AEmulator phát triển từ trình giả lập HTC Desire HD và HTC One M7 của tác giả gốc — không có engine của anh ấy thì không có dự án này.",
    "support_title": "Ủng hộ dự án",
    "support_text": "Nếu AEmulator mang lại chiếc điện thoại bạn yêu thích, bạn có thể ủng hộ phát triển:",
    "links_title": "Liên kết",
@@ -1189,8 +1189,8 @@ window.AEMU_I18N = {
    "l_orig": "Tác giả gốc",
    "license_title": "Giấy phép",
    "license_text": "GPL-3.0. Android, nhãn hiệu và firmware thuộc về chủ sở hữu.",
-   "forum": "Diễn đàn",
-   "forum_open": "Mở diễn đàn"
+   "forum": "",
+   "forum_open": ""
   },
   "zh-CN": {
    "s_fw": "已测试固件",
@@ -1209,7 +1209,7 @@ window.AEMU_I18N = {
     "免费开源（GPL-3.0）"
    ],
    "fw_title": "固件列表",
-   "fw_intro": "已验证固件的列表（含状态、备注和下载链接）现已移至我们的论坛。你可以在那里分享结果、提问并发现新的镜像。",
+   "fw_intro": "",
    "c_device": "设备",
    "c_android": "Android",
    "c_skin": "系统界面",
@@ -1235,8 +1235,8 @@ window.AEMU_I18N = {
    "fw_legal": "固件归各厂商所有。链接指向厂商服务器或公共存档；AEmulator 不附带任何固件。",
    "start_title": "快速开始",
    "steps": [
-    "从 <a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> 下载并安装 APK。",
-    "在<a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">论坛</a>找到固件并下载到手机。",
+    "从 <a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> 下载并安装 APK。",
+    "将固件文件下载到手机。",
     "打开 AEmulator →<b>添加固件</b>并选择文件。导入需要几分钟。",
     "点击<b>启动</b>。首次启动较慢：系统正在优化应用。",
     "⋮ 菜单可调音量、电源键和日志；⚙️ 打开设置与语言。"
@@ -1252,7 +1252,7 @@ window.AEMU_I18N = {
    "how_title": "工作原理",
    "how_text": "在 Android 2.3–4.4 上，每个客户机进程运行在改进的用户态 QEMU 中；在 5.0–17 上，固件自带的 arm64 程序原生运行，由每个 Android 版本各自的引擎内核拦截其系统调用。binder 守护进程取代内核驱动，GL 桥把 OpenGL ES 调用转发给 GPU，小型客户机库（音频 HAL、audio policy 包装、LD_PRELOAD 垫片）让厂商代码适配模拟器。导入器读取固件，在 boot 镜像中找到 init 脚本，并生成系统服务的启动计划。",
    "credits_title": "致谢",
-   "credits_text": "AEmulator 源自<a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">原作者</a>的 HTC Desire HD 与 HTC One M7 模拟器——没有他的引擎就没有本项目。",
+   "credits_text": "AEmulator 源自原作者的 HTC Desire HD 与 HTC One M7 模拟器——没有他的引擎就没有本项目。",
    "support_title": "支持项目",
    "support_text": "如果 AEmulator 让你心爱的手机重获新生，欢迎支持开发：",
    "links_title": "链接",
@@ -1262,8 +1262,8 @@ window.AEMU_I18N = {
    "l_orig": "原作者",
    "license_title": "许可证",
    "license_text": "GPL-3.0。Android、商标及固件归其所有者所有。",
-   "forum": "论坛",
-   "forum_open": "打开论坛"
+   "forum": "",
+   "forum_open": ""
   },
   "ja": {
    "s_fw": "検証済みファームウェア",
@@ -1282,7 +1282,7 @@ window.AEMU_I18N = {
     "無料・オープンソース（GPL-3.0）"
    ],
    "fw_title": "ファームウェア一覧",
-   "fw_intro": "動作確認済みファームウェアの一覧（状態・メモ・ダウンロードリンク付き）はフォーラムにあります。結果の共有や質問、新しいイメージ探しもそちらでどうぞ。",
+   "fw_intro": "",
    "c_device": "端末",
    "c_android": "Android",
    "c_skin": "UI",
@@ -1308,8 +1308,8 @@ window.AEMU_I18N = {
    "fw_legal": "ファームウェアは各メーカーに帰属します。リンク先はメーカーのサーバーまたは公開アーカイブで、AEmulator にファームウェアは含まれません。",
    "start_title": "クイックスタート",
    "steps": [
-    "<a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> から APK をダウンロードしてインストール。",
-    "<a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">フォーラム</a>でファームウェアを探し、スマホにダウンロードします。",
+    "<a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a> から APK をダウンロードしてインストール。",
+    "ファームウェアファイルをスマホにダウンロードします。",
     "AEmulator を開き →<b>ファームウェアを追加</b>でファイルを選択。インポートには数分かかります。",
     "<b>起動</b>をタップ。初回はアプリ最適化のため時間がかかります。",
     "⋮ メニューで音量・電源ボタン・ログ、⚙️ で設定と言語。"
@@ -1325,7 +1325,7 @@ window.AEMU_I18N = {
    "how_title": "仕組み",
    "how_text": "Android 2.3〜4.4 では各ゲストプロセスが改良版ユーザーモード QEMU で動き、5.0〜17 ではファームウェア自身の arm64 プログラムがネイティブに動き、Android のバージョンごとのエンジンカーネルがシステムコールを受け持ちます。binder デーモンがカーネルドライバーの代わりを務め、GL ブリッジが OpenGL ES 呼び出しを GPU に転送し、小さなゲストライブラリ（オーディオ HAL、audio policy ラッパー、LD_PRELOAD シム）がメーカーのコードをエミュレーターに合わせます。インポーターはファームウェアを読み、boot イメージの init スクリプトからサービスの起動計画を作ります。",
    "credits_title": "クレジット",
-   "credits_text": "AEmulator は<a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">オリジナル作者</a>の HTC Desire HD・HTC One M7 エミュレーターから生まれました。そのエンジンなしにこのプロジェクトはありません。",
+   "credits_text": "AEmulator はオリジナル作者の HTC Desire HD・HTC One M7 エミュレーターから生まれました。そのエンジンなしにこのプロジェクトはありません。",
    "support_title": "プロジェクトを支援",
    "support_text": "AEmulator で思い出のスマホがよみがえったら、開発を支援できます：",
    "links_title": "リンク",
@@ -1335,8 +1335,8 @@ window.AEMU_I18N = {
    "l_orig": "オリジナル作者",
    "license_title": "ライセンス",
    "license_text": "GPL-3.0。Android、商標、ファームウェアは各所有者に帰属します。",
-   "forum": "フォーラム",
-   "forum_open": "フォーラムを開く"
+   "forum": "",
+   "forum_open": ""
   },
   "ko": {
    "s_fw": "테스트된 펌웨어",
@@ -1355,7 +1355,7 @@ window.AEMU_I18N = {
     "무료 오픈 소스(GPL-3.0)"
    ],
    "fw_title": "펌웨어 목록",
-   "fw_intro": "검증된 펌웨어 목록(상태, 메모, 다운로드 링크 포함)은 포럼에 있습니다. 결과를 공유하고 질문하고 새 이미지를 찾아보세요.",
+   "fw_intro": "",
    "c_device": "기기",
    "c_android": "Android",
    "c_skin": "UI",
@@ -1381,8 +1381,8 @@ window.AEMU_I18N = {
    "fw_legal": "펌웨어 파일은 각 제조사의 것입니다. 링크는 제조사 서버나 공개 아카이브로 연결되며 AEmulator에는 펌웨어가 포함되지 않습니다.",
    "start_title": "빠른 시작",
    "steps": [
-    "<a href=\"https://github.com/uxazu/aemulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a>에서 APK를 받아 설치합니다.",
-    "<a href=\"https://aeforum.uxazuu.space/\" target=\"_blank\" rel=\"noopener\">포럼</a>에서 펌웨어를 찾아 휴대폰에 내려받으세요.",
+    "<a href=\"https://github.com/hesan20082021/AEmulator/releases\" target=\"_blank\" rel=\"noopener\">Releases</a>에서 APK를 받아 설치합니다.",
+    "펌웨어 파일을 휴대폰에 내려받으세요.",
     "AEmulator → <b>펌웨어 추가</b>에서 파일을 고릅니다. 가져오기는 몇 분 걸립니다.",
     "<b>시작</b>을 누릅니다. 첫 부팅은 앱 최적화로 더 오래 걸립니다.",
     "⋮ 메뉴에서 볼륨·전원 버튼·로그, ⚙️에서 설정과 언어."
@@ -1398,7 +1398,7 @@ window.AEMU_I18N = {
    "how_title": "작동 방식",
    "how_text": "Android 2.3–4.4에서는 각 게스트 프로세스가 수정된 사용자 모드 QEMU에서 실행되고, 5.0–17에서는 펌웨어 자체의 arm64 프로그램이 네이티브로 실행되며 Android 버전마다 별도의 엔진 커널이 시스템 호출을 처리합니다. binder 데몬이 커널 드라이버를 대신하고, GL 브리지가 OpenGL ES 호출을 GPU로 전달하며, 작은 게스트 라이브러리(오디오 HAL, audio policy 래퍼, LD_PRELOAD 심)가 제조사 코드를 에뮬레이터에 맞춥니다. 가져오기 도구는 펌웨어를 읽고 boot 이미지의 init 스크립트로 서비스 시작 계획을 만듭니다.",
    "credits_title": "감사의 말",
-   "credits_text": "AEmulator는 <a href=\"https://t.me/istratii_tech1\" target=\"_blank\" rel=\"noopener\">원작자</a>의 HTC Desire HD·HTC One M7 에뮬레이터에서 시작되었습니다. 그의 엔진이 없었다면 이 프로젝트도 없었습니다.",
+   "credits_text": "AEmulator는 원작자의 HTC Desire HD·HTC One M7 에뮬레이터에서 시작되었습니다. 그의 엔진이 없었다면 이 프로젝트도 없었습니다.",
    "support_title": "프로젝트 후원",
    "support_text": "AEmulator로 추억의 휴대폰을 되살렸다면 개발을 후원할 수 있습니다:",
    "links_title": "링크",
@@ -1408,8 +1408,8 @@ window.AEMU_I18N = {
    "l_orig": "원작자",
    "license_title": "라이선스",
    "license_text": "GPL-3.0. Android, 상표, 펌웨어는 각 소유자에게 있습니다.",
-   "forum": "포럼",
-   "forum_open": "포럼 열기"
+   "forum": "",
+   "forum_open": ""
   }
  }
 };

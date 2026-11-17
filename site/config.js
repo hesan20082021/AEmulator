@@ -1,20 +1,12 @@
 /*
- * AEmulator — настройки сайта (без бэкенда). Правьте этот файл и обновите страницу.
- * Его же читает генератор README (docs/readme/gen.py), так что ссылки на GitHub совпадут с сайтом.
+ * AEmulator — 站点设置（无后端）。修改此文件后刷新页面即可。
+ * README 生成器 (docs/readme/gen.py) 也读取此文件，保证链接一致。
  *
- * Список прошивок ведётся на форуме (links.forum), а не здесь.
- *
- * Внутри AEMU_CONFIG должен оставаться чистый JSON (двойные кавычки, без комментариев и хвостовых запятых).
+ * AEMU_CONFIG 内必须是干净的 JSON（双引号、无注释、无尾随逗号）。
  */
 window.AEMU_CONFIG = {
   "version": "0.0.0.3",
   "links": {
-    "repo": "https://github.com/uxazu/aemulator",
-    "site": "https://aemulator.gt.tc",
-    "forum": "https://aeforum.uxazuu.space/",
-    "channel": "https://t.me/aemulatorofficial",
-    "author": "https://github.com/uxazu",
-    "original": "https://t.me/istratii_tech1",
-    "donate": "https://dalink.to/uxazu"
+    "repo": "https://github.com/hesan20082021/AEmulator"
   }
 };

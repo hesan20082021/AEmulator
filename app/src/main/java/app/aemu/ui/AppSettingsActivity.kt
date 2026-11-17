@@ -84,14 +84,9 @@ import app.aemu.AppPrefs
 import app.aemu.BuildConfig
 import app.aemu.R
 
-/** Ссылки проекта — одни и те же в приложении, README и на сайте. */
+/** 项目链接。 */
 object Links {
-    const val SITE = "https://aemulator.gt.tc"
-    const val GITHUB = "https://github.com/uxazu/aemulator"
-    const val CHANNEL = "https://t.me/aemulatorofficial"
-    const val AUTHOR = "https://github.com/uxazu"
-    const val ORIGINAL = "https://t.me/istratii_tech1"
-    const val DONATE = "https://dalink.to/uxazu"
+    const val GITHUB = "https://github.com/hesan20082021/AEmulator"
 }
 
 class AppSettingsActivity : ComponentActivity() {
@@ -253,17 +248,7 @@ private fun AppSettings(onBack: () -> Unit, onRestyle: () -> Unit) {
 
             item {
                 Section(stringResource(R.string.as_links)) {
-                    Row_(Icons.Rounded.Public, stringResource(R.string.as_site), "aemulator.gt.tc") { open(Links.SITE) }
-                    Row_(Icons.Rounded.Send, stringResource(R.string.as_channel), "@aemulatorofficial") { open(Links.CHANNEL) }
-                    Row_(Icons.Rounded.Person, stringResource(R.string.as_author), "uxazu") { open(Links.AUTHOR) }
-                    Row_(Icons.Rounded.History, stringResource(R.string.as_orig), "t.me/istratii_tech1") { open(Links.ORIGINAL) }
-                    Row_(Icons.Rounded.Code, stringResource(R.string.as_github), "github.com/uxazu/aemulator") { open(Links.GITHUB) }
-                }
-            }
-
-            item {
-                Section(stringResource(R.string.as_support)) {
-                    Row_(Icons.Rounded.Favorite, stringResource(R.string.as_donate), "dalink.to/uxazu") { open(Links.DONATE) }
+                    Row_(Icons.Rounded.Code, stringResource(R.string.as_github), "github.com/hesan20082021/AEmulator") { open(Links.GITHUB) }
                 }
             }
         }

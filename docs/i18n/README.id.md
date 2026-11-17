@@ -4,11 +4,9 @@
 
 # AEmulator
 
-*Based on the original [SENSES emulator](https://github.com/Istratii-tech/SENSES)*
-
 **Firmware Android klasik — HTC Sense, TouchWiz, MIUI, AOSP — di ponsel modern. Tanpa root, tanpa PC.**
 
-[![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/uxazu/aemulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](../../LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/uxazu/aemulator) [![Forum](https://img.shields.io/badge/Forum-aeforum-FF6D00?style=for-the-badge&logo=discourse&logoColor=white)](https://aeforum.uxazuu.space/) [![Telegram](https://img.shields.io/badge/Telegram-channel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/aemulatorofficial) [![Website](https://img.shields.io/badge/site-aemulator.gt.tc-111?style=for-the-badge)](https://aemulator.gt.tc)
+[![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/hesan20082021/AEmulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](../../LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/hesan20082021/AEmulator)
 
 [🇬🇧 English](../../README.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇧🇷 Português](README.pt-BR.md) · [🇮🇹 Italiano](README.it.md) · [🇵🇱 Polski](README.pl.md) · [🇹🇷 Türkçe](README.tr.md) · [🇸🇦 العربية](README.ar.md) · [🇮🇷 فارسی](README.fa.md) · [🇮🇳 हिन्दी](README.hi.md) · **🇮🇩 Indonesia** · [🇻🇳 Tiếng Việt](README.vi.md) · [🇨🇳 简体中文](README.zh-CN.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md)
 
@@ -27,20 +25,10 @@ AEmulator mem-boot sistem Android 2.3–17 asli langsung dari file firmware: ZIP
 - Antarmuka Material 3 Expressive dalam 18 bahasa
 - Gratis dan sumber terbuka (GPL-3.0)
 
-## 📱 Daftar firmware
-
-Daftar firmware yang sudah diperiksa — lengkap dengan status, catatan, dan tautan unduhan — ada di forum kami. Bagikan hasilmu, bertanya, dan temukan image baru di sana.
-
-<div align="center">
-
-<a href="https://aeforum.uxazuu.space/"><img src="https://img.shields.io/badge/Buka%20forum-aeforum.uxazuu.space-FF6D00?style=for-the-badge&logo=discourse&logoColor=white" height="44" alt="Forum"/></a>
-
-</div>
-
 ## 🚀 Mulai cepat
 
-1. Unduh APK dari [Releases](https://github.com/uxazu/aemulator/releases) lalu pasang.
-2. Cari firmware di [forum](https://aeforum.uxazuu.space/) lalu unduh ke ponsel.
+1. Unduh APK dari [Releases](https://github.com/hesan20082021/AEmulator/releases) lalu pasang.
+2. Unduh file firmware ke ponsel.
 3. Buka AEmulator → **Tambah firmware** lalu pilih file. Impor butuh beberapa menit.
 4. Tekan **Mulai**. Boot pertama lebih lambat: sistem mengoptimalkan aplikasi.
 5. Menu ⋮ untuk volume, tombol daya, dan log; ⚙️ membuka setelan dan bahasa.
@@ -60,28 +48,10 @@ Di Android 2.3–4.4 setiap proses tamu berjalan di QEMU mode pengguna yang dimo
 Butuh JDK 17, Android SDK 36, dan NDK r28. Pustaka tamu dibangun dengan `native/*/build.sh`.
 
 ```bash
-git clone https://github.com/uxazu/aemulator.git
-cd aemulator
+git clone https://github.com/hesan20082021/AEmulator.git
+cd AEmulator
 ./gradlew assembleRelease
 ```
-
-## 🙏 Kredit
-
-AEmulator tumbuh dari emulator HTC Desire HD dan HTC One M7 karya [pembuat asli](https://t.me/istratii_tech1) — tanpa mesinnya proyek ini tidak akan ada.
-
-## 💙 Dukung proyek
-
-Jika AEmulator mengembalikan ponsel kesayangan Anda, Anda bisa mendukung pengembangan:
-
-- 💳 [dalink.to/uxazu](https://dalink.to/uxazu)
-
-## 🔗 Tautan
-
-- 🌐 Situs web: [aemulator.gt.tc](https://aemulator.gt.tc)
-- 💬 Forum: [aeforum.uxazuu.space](https://aeforum.uxazuu.space/)
-- 📣 Kanal Telegram: [@aemulatorofficial](https://t.me/aemulatorofficial)
-- 👤 Pembuat: [uxazu](https://github.com/uxazu)
-- 🧬 Pembuat asli: [t.me/istratii_tech1](https://t.me/istratii_tech1)
 
 ## 📄 Lisensi
 
