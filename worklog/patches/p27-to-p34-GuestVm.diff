@@ -1,0 +1,69 @@
+--- p27smali/app/aemu/core/GuestVm.smali	2026-11-17 14:40:24.044000471 +0800
++++ p34smali/app/aemu/core/GuestVm.smali	2026-11-17 20:36:36.384001745 +0800
+@@ -1579,6 +1579,8 @@
+ 
+     invoke-virtual {v2, v3, v0}, Lapp/aemu/core/ImageStore;->save(Landroid/content/Context;Lapp/aemu/core/GuestImage;)V
+ 
++    invoke-direct {v1}, Lapp/aemu/core/GuestVm;->restartSystemUi()V
++
+     return-void
+ .end method
+ 
+@@ -5494,7 +5496,6 @@
+     invoke-virtual {v9}, Lapp/aemu/core/VmSettings;->getDensity()I
+ 
+     move-result v3
+-    const/16 v3, 0xf0
+ 
+     invoke-static {v3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+ 
+@@ -5508,7 +5509,6 @@
+     invoke-virtual {v9}, Lapp/aemu/core/VmSettings;->getDensity()I
+ 
+     move-result v3
+-    const/16 v3, 0xf0
+ 
+     invoke-static {v3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+ 
+@@ -23158,7 +23158,7 @@
+ 
+     if-eqz v2, :fd_done
+ 
+-    const-string/jumbo v0, "wm density 240; wm size 540x960; getprop persist.sys.display_density"
++    const-string/jumbo v0, "getprop persist.sys.display_density"
+ 
+     const-wide/16 v2, 0x7530
+ 
+@@ -26633,3 +26633,32 @@
+ 
+     return-object v0
+ .end method
++
++.method private final restartSystemUi()V
++    .locals 6
++
++    :try_start_rs
++    const-string/jumbo v0, "wm density reset; wm size reset; settings put system key_is_open_prevent_mode false >/dev/null; am force-stop com.android.systemui >/dev/null; sleep 2; am start-service -n com.android.systemui/.SystemUIService >/dev/null; echo AEMU-SUI-RESTART; echo ===NET===; ping -c 1 -W 2 223.5.5.5 2>&1 | tail -3; getprop | grep -E \"net.dns|net.eth0|net.wlan\" 2>&1 | head -6; ip addr 2>&1 | head -8; echo ===PM===; ls -l /system/bin/pm 2>&1; pm list packages 2>&1 | head -3; echo ===SVC===; getprop init.svc.installd; getprop init.svc.zygote; echo ===WEBVIEW===; pm list packages 2>/dev/null | grep -i webview; echo ===SD===; ls /sdcard/ 2>&1 | head -3; echo AEMU-DIAG-END"
++
++    const-wide/16 v1, 0x7530
++
++    invoke-virtual {p0, v0, v1, v2}, Lapp/aemu/core/GuestVm;->guestShell(Ljava/lang/String;J)Ljava/lang/String;
++
++    move-result-object v0
++
++    invoke-virtual {p0, v0}, Lapp/aemu/core/GuestVm;->log(Ljava/lang/String;)V
++    :try_end_rs
++    .catchall {:try_start_rs .. :try_end_rs} :catchall_rs
++
++    goto :rs_done
++
++    :catchall_rs
++    move-exception v3
++
++    const-string/jumbo v3, "AEMU-SUI-RESTART failed"
++
++    invoke-virtual {p0, v3}, Lapp/aemu/core/GuestVm;->log(Ljava/lang/String;)V
++
++    :rs_done
++    return-void
++.end method
