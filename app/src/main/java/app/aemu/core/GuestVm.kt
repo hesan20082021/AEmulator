@@ -932,6 +932,29 @@ class GuestVm(val ctx: Context, val img: GuestImage) {
         if (start) Thread { runCatching { startService(def) } }.start()
     }
 
+    /**
+     * On Oplus-based guests, set Settings.System "key_is_open_prevent_mode" to false after boot and restart
+     * com.android.systemui. The write is placed in afterBoot() because settings.db is not present earlier in
+     * the boot sequence. Firmware detection uses build.prop markers; guests that do not match are left unchanged.
+     */
+    private fun oplusSystemUi() {
+        if (engine != Engine.N64) return
+        val oplus = listOf("my_product/build.prop", "system/build.prop", "vendor/build.prop").any { rel ->
+            runCatching { File(paths.root, rel).readText() }.getOrDefault("").let {
+                it.contains("ro.build.version.oplusrom") || it.contains("ro.oplus.")
+            }
+        }
+        if (!oplus) return
+        runCatching {
+            guestShell(
+                "settings put system key_is_open_prevent_mode false; " +
+                    "am force-stop com.android.systemui; " +
+                    "am start-service -n com.android.systemui/.SystemUIService",
+                60_000,
+            )
+        }.onFailure { log("SystemUI restart failed: $it") }
+    }
+
     private fun afterBoot() {
         val r = guestRunner
         if (skipWizardNow()) return   // the system comes up again and gets here once more
@@ -948,6 +971,7 @@ class GuestVm(val ctx: Context, val img: GuestImage) {
         if (engine == Engine.N64 && kernel.webViewSingleProcess)
             runCatching { guestShell("cmd webviewupdate disable-multiprocess", 30_000) }
         TreeFixer(ctx, paths, img, ::log).noScreenSleep()
+        oplusSystemUi()
         disableBrokenComponents()
         if (img.api >= 24) runCatching { enableHome() }.onFailure { log("home screen check failed: $it") }
         val img2 =img.copy(lastBootMs = bootDoneAt - bootAt, bootCount = img.bootCount + 1)
