@@ -1,9 +1,22 @@
-name: 打包最新版 APK
+name: 打包并发布 APK
 
 on:
   workflow_dispatch:
+    inputs:
+      channel:
+        description: '发布通道（beta=测试版，release=正式版）'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - beta
+          - release
   push:
     branches: [oplus-systemui-fix]
+    tags: ['v*']
+
+permissions:
+  contents: write
 
 concurrency:
   group: build-latest
@@ -11,12 +24,13 @@ concurrency:
 
 jobs:
   build:
-    name: 构建 Release APK
+    name: 构建并发布
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
       ANDROID_HOME: /usr/local/lib/android/sdk
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+      CHANNEL_INPUT: ${{ github.event.inputs.channel }}
     steps:
       - name: 检出源码
         uses: actions/checkout@v4
@@ -34,36 +48,98 @@ jobs:
           if [ ! -x "$SDKMGR" ]; then
             SDKMGR=$(find "$ANDROID_HOME" -path '*/bin/sdkmanager' -type f | head -1)
           fi
-          echo "sdkmanager: $SDKMGR"
           yes | "$SDKMGR" --licenses > /dev/null 2>&1 || true
           "$SDKMGR" "platforms;android-36" "build-tools;36.0.0"
           echo "sdk.dir=$ANDROID_HOME" > local.properties
-          cat local.properties
 
-      - name: 移除 Windows 专属的 Java 路径
+      - name: 移除 Windows 专属 Java 路径
+        shell: bash
+        run: sed -i '/org.gradle.java.home/d' gradle.properties
+
+      - name: 配置签名
         shell: bash
         run: |
-          sed -i '/org.gradle.java.home/d' gradle.properties
-          cat gradle.properties
+          mkdir -p signing
+          base64 -d signing/release.keystore.b64 > signing/release.keystore
+          cat > keystore.properties <<EOF
+          storeFile=signing/release.keystore
+          storePassword=aemu-release-2026
+          keyAlias=aemu-release
+          keyPassword=aemu-release-2026
+          EOF
+          keytool -list -keystore signing/release.keystore -storepass aemu-release-2026 2>&1 | grep aemu-release
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
 
-      - name: 构建 Release APK
+      - name: 构建签名 Release APK
         shell: bash
         run: |
           set -o pipefail
           ./gradlew assembleStandardRelease assembleV0003Release --no-daemon 2>&1 | tee build.log
 
-      - name: 列出产物
-        run: find app/build/outputs/apk -name '*.apk' -type f -printf '%p %s bytes\n'
+      - name: 确定通道与版本号
+        id: meta
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            CHANNEL=release
+            TAG="${GITHUB_REF#refs/tags/}"
+          elif [ "$CHANNEL_INPUT" = "release" ]; then
+            CHANNEL=release
+            VER=$(grep -oE 'versionName *= *"[^"]+"' app/build.gradle.kts | head -1 | sed 's/.*"\(.*\)"/\1/')
+            TAG="v${VER}"
+          else
+            CHANNEL=beta
+            TAG="beta-$(date +%Y%m%d)-${GITHUB_SHA::7}"
+          fi
+          echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if [ "$CHANNEL" = beta ]; then
+            echo "title=测试版 $TAG" >> "$GITHUB_OUTPUT"
+          else
+            echo "title=正式版 $TAG" >> "$GITHUB_OUTPUT"
+          fi
+          {
+            echo "### AEmulator $TAG"
+            echo ""
+            if [ "$CHANNEL" = beta ]; then
+              echo "测试版（Pre-release），push 自动构建，含 realme RMX3888 / realme UI 5.0 适配修复，已签名。"
+            else
+              echo "正式版，含 realme RMX3888 / realme UI 5.0 适配修复，已签名。"
+            fi
+            echo ""
+            echo "- \`AEmulator-standard.apk\`：包名 app.aemu"
+            echo "- \`AEmulator-v0003.apk\`：包名 app.aemu.v0003，可与 standard 并存安装"
+          } > release_notes.md
 
-      - name: 上传 APK
+      - name: 整理并校验签名产物
+        shell: bash
+        run: |
+          mkdir -p release-assets
+          STD=$(find app/build/outputs/apk/standard/release -name '*.apk' -type f | head -1)
+          V3=$(find app/build/outputs/apk/v0003/release -name '*.apk' -type f | head -1)
+          echo "standard: $STD"
+          echo "v0003: $V3"
+          cp "$STD" release-assets/AEmulator-standard.apk
+          cp "$V3" release-assets/AEmulator-v0003.apk
+          APKSIGNER=$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | head -1)
+          "$APKSIGNER" verify --print-certs release-assets/AEmulator-standard.apk
+          ls -lh release-assets/
+
+      - name: 上传到 Actions 产物
         uses: actions/upload-artifact@v4
         with:
-          name: aemulator-latest-unsigned
-          path: |
-            app/build/outputs/apk/standard/release/*.apk
-            app/build/outputs/apk/v0003/release/*.apk
+          name: aemulator-signed-${{ steps.meta.outputs.tag }}
+          path: release-assets/*.apk
           if-no-files-found: error
           retention-days: 90
+
+      - name: 发布到 Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: ${{ steps.meta.outputs.title }}
+          body_path: release_notes.md
+          prerelease: ${{ steps.meta.outputs.channel == 'beta' }}
+          files: release-assets/*.apk
