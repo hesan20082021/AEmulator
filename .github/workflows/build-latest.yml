@@ -16,7 +16,6 @@ jobs:
     timeout-minutes: 120
     permissions:
       contents: write
-      issues: write
     env:
       ANDROID_HOME: /usr/local/lib/android/sdk
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
@@ -42,6 +41,13 @@ jobs:
           "$SDKMGR" "platforms;android-36" "build-tools;36.0.0"
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           cat local.properties
+
+      - name: 移除 Windows 专属的 Java 路径
+        shell: bash
+        run: |
+          sed -i '/org.gradle.java.home/d' gradle.properties
+          echo "--- gradle.properties after fix ---"
+          cat gradle.properties
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
