@@ -1,0 +1,35 @@
+commit b665e584a7012fb948023a9f699abec5db0126b0
+Author: hesan20082021 <hesan20082021@users.noreply.github.com>
+Date:   Wed Nov 18 12:28:48 2026 +0800
+
+    fix(core): TreeFixer 本地适配调整
+
+diff --git a/app/src/main/java/app/aemu/core/TreeFixer.kt b/app/src/main/java/app/aemu/core/TreeFixer.kt
+index 6a140f7..0f8c387 100644
+--- a/app/src/main/java/app/aemu/core/TreeFixer.kt
++++ b/app/src/main/java/app/aemu/core/TreeFixer.kt
+@@ -644,7 +644,12 @@ class TreeFixer(
+         }
+         // ...and so does what declares that hardware to the framework: system_server takes "the feature is there but
+         // its HAL is not" as fatal for the whole group of services it was starting (8.x: the window manager is in it)
+-        for (dir in listOf("system/etc/permissions", "vendor/etc/permissions")) for (hw in listOf("consumerir", "fingerprint", "nfc", "nfc.hce", "nfc.hcef")) {
++        // (a vendor ROM of 10+ spreads its permission files over odm, product, system_ext and the skin partitions
++        //  it mounts at the root: realme/OPPO my_*, so the declaration of a parked HAL has to be looked for there too)
++        val permDirs = listOf("system/etc/permissions", "vendor/etc/permissions", "odm/etc/permissions",
++            "product/etc/permissions", "system_ext/etc/permissions", "system/product/etc/permissions",
++            "system/system_ext/etc/permissions") + SKIN_PERMISSION_DIRS.map { "$it/etc/permissions" }
++        for (dir in permDirs) for (hw in listOf("consumerir", "fingerprint", "nfc", "nfc.hce", "nfc.hcef")) {
+             val f = File(root, "$dir/android.hardware.$hw.xml")
+             val dst = File(root, "system/.aemu-parked/${f.relativeTo(root).path.replace('/', '#')}")
+             // which ones is the kernel's call: where the firmware's own HAL loads, the declaration has to be there
+@@ -709,6 +714,10 @@ class TreeFixer(
+         if (parked > 0) log("vendor HALs set aside: $parked")
+     }
+ 
++    /** partitions a vendor's skin adds beside the AOSP ones (realme/OPPO/OnePlus my_*), mounted at the root. */
++    private val SKIN_PERMISSION_DIRS = listOf("my_product", "my_stock", "my_bigball", "my_heytap", "my_engineering",
++        "my_region", "my_carrier", "my_manifest")
++
+     private val VENDOR_HALS = setOf("gralloc", "hwcomposer", "copybit", "lights", "sensors", "audio", "power", "memtrack",
+         "camera", "gps", "fingerprint", "gxfingerprint", "consumerir", "bluetooth", "nfc", "vibrator", "keystore", "gatekeeper")
+ 

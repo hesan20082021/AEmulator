@@ -1,1 +1,45 @@
-diff 打印内容见源仓库；此处存档文件与 rounds/p35/p36 文档同步维护。
+--- /tmp/p34base/app/aemu/core/GuestVm.smali	2026-11-18 18:31:35.292000227 +0800
++++ /tmp/p35s/smali/app/aemu/core/GuestVm.smali	2026-11-18 18:16:58.248000175 +0800
+@@ -1579,6 +1579,8 @@
+ 
+     invoke-virtual {v2, v3, v0}, Lapp/aemu/core/ImageStore;->save(Landroid/content/Context;Lapp/aemu/core/GuestImage;)V
+ 
++    invoke-direct {v1}, Lapp/aemu/core/GuestVm;->netFix()V
++
+     invoke-direct {v1}, Lapp/aemu/core/GuestVm;->restartSystemUi()V
+ 
+     return-void
+@@ -26660,3 +26662,33 @@
+ 
+     return-void
+ .end method
++
++
++.method private final netFix()V
++    .registers 8
++
++    :try_start_nf
++    const-string/jumbo v0, "settings put global captive_portal_mode 0; settings put global captive_portal_use_https 0; settings put global captive_portal_http_url http://connectivitycheck.platform.hicloud.com/generate_204; settings put global captive_portal_https_url https://connectivitycheck.platform.hicloud.com/generate_204; settings put global setting_validate_wifi_enable false || true; settings put global setting_validate_mobile_enable false || true; echo ===NETFIX-DIAG===; settings get global captive_portal_mode; settings get global captive_portal_http_url; ping -c 1 -W 2 223.5.5.5 2>&1 | tail -2; pidof com.android.systemui; getprop init.svc.zygote; dumpsys connectivity > /storage/sdcard/aemu-net-dump.txt 2>&1; dumpsys window > /storage/sdcard/aemu-window.txt 2>&1; logcat -d -t 2000 > /storage/sdcard/aemu-logcat.txt 2>&1; echo AEMU-NET-FIX-END"
++
++    const-wide/32 v1, 0x186a0        # 100 秒超时
++
++    invoke-virtual {p0, v0, v1, v2}, Lapp/aemu/core/GuestVm;->guestShell(Ljava/lang/String;J)Ljava/lang/String;
++
++    move-result-object v0
++
++    invoke-virtual {p0, v0}, Lapp/aemu/core/GuestVm;->log(Ljava/lang/String;)V
++    :try_end_nf
++    .catchall {:try_start_nf .. :try_end_nf} :catchall_nf
++
++    goto :nf_done
++
++    :catchall_nf
++    move-exception v3
++
++    const-string/jumbo v3, "AEMU-NET-FIX failed"
++
++    invoke-virtual {p0, v3}, Lapp/aemu/core/GuestVm;->log(Ljava/lang/String;)V
++
++    :nf_done
++    return-void
++.end method
