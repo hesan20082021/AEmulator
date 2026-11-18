@@ -14,8 +14,6 @@ jobs:
     name: 构建 Release APK
     runs-on: ubuntu-latest
     timeout-minutes: 120
-    permissions:
-      contents: write
     env:
       ANDROID_HOME: /usr/local/lib/android/sdk
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
@@ -46,54 +44,21 @@ jobs:
         shell: bash
         run: |
           sed -i '/org.gradle.java.home/d' gradle.properties
-          echo "--- gradle.properties after fix ---"
           cat gradle.properties
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
 
       - name: 构建 Release APK
-        continue-on-error: true
         shell: bash
         run: |
           set -o pipefail
-          ./gradlew assembleStandardRelease assembleV0003Release --no-daemon --stacktrace 2>&1 | tee build.log
-          echo "BUILD_EXIT=${PIPESTATUS[0]}" | tee -a build.log
-
-      - name: 把构建日志写成仓库文件
-        if: always()
-        shell: bash
-        run: |
-          {
-            echo "# 构建日志（自动生成，run ${{ github.run_id }}）"
-            echo ''
-            echo '```text'
-            tail -n 300 build.log 2>/dev/null || echo "无日志"
-            echo '```'
-          } > BUILD_LOG.md
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f BUILD_LOG.md
-          git commit -m "记录自动构建日志 run ${{ github.run_id }}" || echo "无变更"
-          git push origin HEAD:${{ github.ref_name }} || echo "推送日志失败"
-
-      - name: 若构建失败则标记失败
-        if: always()
-        shell: bash
-        run: |
-          if grep -q 'BUILD_EXIT=0' build.log 2>/dev/null; then
-            echo "构建成功"
-          else
-            echo "构建失败，日志见 BUILD_LOG.md"
-            exit 1
-          fi
+          ./gradlew assembleStandardRelease assembleV0003Release --no-daemon 2>&1 | tee build.log
 
       - name: 列出产物
-        if: success()
         run: find app/build/outputs/apk -name '*.apk' -type f -printf '%p %s bytes\n'
 
       - name: 上传 APK
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: aemulator-latest-unsigned
