@@ -4,7 +4,7 @@
 
 # AEmulator
 
-**Run classic Android firmware — HTC Sense, TouchWiz, MIUI, AOSP — on a modern phone. No root, no PC.**
+**在现代手机上运行经典 Android 固件——HTC Sense、TouchWiz、MIUI、AOSP。无需 root，无需电脑。**
 
 [![Version](https://img.shields.io/badge/version-0.0.0.3-3D5AFE?style=for-the-badge)](https://github.com/hesan20082021/AEmulator/releases) [![License](https://img.shields.io/badge/license-GPL--3.0-3D5AFE?style=for-the-badge)](LICENSE) [![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/hesan20082021/AEmulator)
 
@@ -14,38 +14,48 @@
 
 ---
 
-AEmulator boots a real Android 2.3–17 system image straight from a firmware file you already have: a recovery ZIP, an Odin archive, a Google factory image or a GSI. Old 32-bit firmware (2.3–4.4) runs through a patched QEMU, Android 5.0–17 runs natively on the phone’s arm64 cores. The kernel’s binder is emulated, graphics use your phone’s GPU and sound goes through Android’s audio stack — everything runs inside a normal app.
+## 这个项目做了什么
 
-## ✨ Features
+AEmulator 让经典安卓系统镜像直接跑在现代安卓手机上，无需 root、无需电脑。它从你已有的固件文件（卡刷 ZIP、Odin 包、Google 出厂镜像、GSI）启动真实的 Android 2.3–17 系统：老固件走补丁版 QEMU，Android 5.0 以上在手机的 arm64 核心上原生运行。内核 binder 被模拟，图形走手机 GPU，声音走安卓音频栈，全部装在一个普通 App 里。
 
-- Import almost any firmware format: CWM/TWRP ZIP, Samsung Odin `.tar.md5`, Google factory `.tgz`, `system.img`, OTA `system.new.dat.br`
-- Vendor skins work as shipped: HTC Sense, Samsung TouchWiz, MIUI, AOSP
-- Hardware graphics through the GL bridge, sound, touch and multitouch, network with a modern TLS proxy
-- Shared memory-card folder for APKs, music and photos
-- Material 3 Expressive interface in 18 languages
-- Free and open source (GPL-3.0)
+本项目在 AEmulator 0.0.0.3 基础上，完成了对 realme RMX3888 / realme UI 5.0（Android 14）的适配修复：
 
-## 🚀 Quick start
+- 修复 Oplus / realme UI 客机 SystemUI 反复崩溃导致的黑屏。
+- 显示调整为 720×1600，并去掉写死的密度值。
+- 外部 APK 导入、联网、导航键注入三项尚未有确定结论。
 
-1. Download the APK from [Releases](https://github.com/hesan20082021/AEmulator/releases) and install it.
-2. Download a firmware file to your phone.
-3. Open AEmulator → **Add firmware** and pick the file. Import takes a few minutes.
-4. Press **Start**. The first boot is slower: the system optimises its apps.
-5. Use the ⋮ menu for volume, power button and logs; the ⚙️ button opens app settings and language.
+修复源码在 `oplus-systemui-fix` 分支，完整工程记录见 [worklog](https://github.com/hesan20082021/AEmulator/tree/progress-archive/worklog)。最新版 APK 由 GitHub Actions 自动打包，可在 [Releases](https://github.com/hesan20082021/AEmulator/releases) 下载。
 
-## 📋 Requirements
+## ✨ 功能
 
-- Android 8.0+ on a 64-bit ARM phone (arm64-v8a)
-- About 1–3 GB of free space per firmware
-- A recent Snapdragon / Dimensity / Tensor chip is recommended
+- 导入几乎所有固件格式：CWM/TWRP 卡刷 ZIP、三星 Odin `.tar.md5`、Google 出厂 `.tgz`、`system.img`、OTA `system.new.dat.br`
+- 厂商系统原样运行：HTC Sense、三星 TouchWiz、MIUI、AOSP
+- 经 GL 桥的硬件图形、声音、触控与多点触控，带现代 TLS 代理的网络
+- 共享存储卡文件夹，方便放 APK、音乐和照片
+- Material 3 Expressive 界面，支持 18 种语言
+- 免费开源（GPL-3.0）
 
-## ⚙️ How it works
+## 🚀 快速开始
 
-On Android 2.3–4.4 each guest process runs under a patched user-mode QEMU; on 5.0–17 the firmware’s own arm64 programs run natively, with one engine kernel per Android version catching their system calls. A binder daemon replaces the kernel driver, a GL bridge forwards OpenGL ES calls to the phone’s GPU, and small guest libraries (audio HAL, audio policy wrapper, LD_PRELOAD shim) adapt vendor code to the emulator. The importer reads the firmware, finds the init scripts in its boot image and builds a start plan for system services.
+1. 从 [Releases](https://github.com/hesan20082021/AEmulator/releases) 下载并安装 APK。
+2. 将固件文件下载到手机。
+3. 打开 AEmulator →**添加固件**并选择文件。导入需要几分钟。
+4. 点击**启动**。首次启动较慢：系统正在优化应用。
+5. ⋮ 菜单可调音量、电源键和日志；⚙️ 打开设置与语言。
 
-## 🛠️ Build from source
+## 📋 要求
 
-You need JDK 17, Android SDK 36 and NDK r28. Native guest parts are built with the scripts in `native/*/build.sh`.
+- 64 位 ARM 手机（arm64-v8a）上的 Android 8.0+
+- 每个固件约需 1–3 GB 空间
+- 推荐较新的骁龙 / 天玑 / Tensor 芯片
+
+## ⚙️ 工作原理
+
+在 Android 2.3–4.4 上，每个客户机进程运行在改进的用户态 QEMU 中；在 5.0–17 上，固件自带的 arm64 程序原生运行，由每个 Android 版本各自的引擎内核拦截其系统调用。binder 守护进程取代内核驱动，GL 桥把 OpenGL ES 调用转发给 GPU，小型客户机库（音频 HAL、audio policy 包装、LD_PRELOAD 垫片）让厂商代码适配模拟器。导入器读取固件，在 boot 镜像中找到 init 脚本，并生成系统服务的启动计划。
+
+## 🛠️ 从源码构建
+
+需要 JDK 17、Android SDK 36 和 NDK r28。客户机库通过 `native/*/build.sh` 构建。
 
 ```bash
 git clone https://github.com/hesan20082021/AEmulator.git
@@ -53,6 +63,6 @@ cd AEmulator
 ./gradlew assembleRelease
 ```
 
-## 📄 License
+## 📄 许可证
 
-GPL-3.0. Android, trademarks and firmware belong to their owners.
+GPL-3.0。Android、商标及固件归其所有者所有。
