@@ -14,6 +14,9 @@ jobs:
     name: 构建 Release APK
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - name: 检出源码
         uses: actions/checkout@v4
@@ -26,9 +29,6 @@ jobs:
 
       - name: 安装 Android SDK platform 36 与 build-tools
         shell: bash
-        env:
-          ANDROID_HOME: /usr/local/lib/android/sdk
-          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: |
           SDKMGR="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           if [ ! -x "$SDKMGR" ]; then
@@ -37,19 +37,46 @@ jobs:
           echo "sdkmanager: $SDKMGR"
           yes | "$SDKMGR" --licenses > /dev/null 2>&1 || true
           "$SDKMGR" "platforms;android-36" "build-tools;36.0.0"
-          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
-          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> "$GITHUB_ENV"
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          cat local.properties
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
 
       - name: 构建 Release APK
-        run: ./gradlew assembleStandardRelease assembleV0003Release --no-daemon
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          ./gradlew assembleStandardRelease assembleV0003Release --no-daemon --stacktrace 2>&1 | tee build.log
+          echo "BUILD_EXIT=${PIPESTATUS[0]}" | tee -a build.log
+
+      - name: 上传构建日志（诊断用）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: 若构建失败则标记失败
+        if: always()
+        shell: bash
+        run: |
+          if grep -q 'BUILD_EXIT=0' build.log 2>/dev/null; then
+            echo "构建成功"
+          else
+            echo "构建失败，详见 build-log artifact"
+            exit 1
+          fi
 
       - name: 列出产物
+        if: success()
         run: find app/build/outputs/apk -name '*.apk' -type f -printf '%p %s bytes\n'
 
       - name: 上传 APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: aemulator-latest-unsigned
