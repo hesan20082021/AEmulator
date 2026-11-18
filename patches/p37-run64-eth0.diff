@@ -1,0 +1,93 @@
+--- a/native/guest64/34/run64.c
++++ b/native/guest64/34/run64.c
+@@ -407,13 +407,14 @@
+ };
+ 
+ #define MAX_NL 32
+-static struct { int fd, peer; } g_nl[MAX_NL];
++static struct { int fd, peer, route; } g_nl[MAX_NL];
+ 
+ static void nl_register(int fd, int peer) {
+     for (int i = 0; i < MAX_NL; i++) {
+         if (!g_nl[i].fd) {
+             g_nl[i].fd = fd;
+             g_nl[i].peer = peer;
++            g_nl[i].route = 0;
+             return;
+         }
+     }
+@@ -443,10 +444,63 @@
+     }
+ }
+ 
++// The guest's network as its programs list it (getifaddrs, java.net.NetworkInterface): the loopback and the one
++// interface the engine's network stand-in registers, eth0 with 10.0.2.15/24. Without them libc has no interfaces at
++// all and the framework registers no network: ConnectivityService sees nothing, and the apps refuse to use it.
++static void nl_attr(char *m, u32 *len, u16 type, const void *data, u16 n) {
++    u16 *h = (u16 *)(m + *len);
++    h[0] = (u16)(4 + n); h[1] = type;
++    memcpy(m + *len + 4, data, n);
++    u32 end = *len + 4 + n;
++    while (end & 3) m[end++] = 0;
++    *len = end;
++}
++static void nl_put(int peer, const struct aemu_nlmsghdr *req, u16 type, char *m, u32 len) {
++    struct aemu_nlmsghdr *h = (struct aemu_nlmsghdr *)m;
++    h->len = len; h->type = type; h->flags = 2 /*NLM_F_MULTI*/; h->seq = req->seq; h->pid = req->pid;
++    S3(NR_write, peer, m, len);
++}
++static void nl_links(int peer, const struct aemu_nlmsghdr *req) {
++    static const struct { const char *name; u16 type; int index; u32 flags, mtu; u8 mac[6], bc[6]; } L[2] = {
++        { "lo", 772, 1, 0x10049, 65536, { 0 }, { 0 } },
++        { "eth0", 1, 2, 0x11043, 1500, { 0x52, 0x54, 0x00, 0x12, 0x34, 0x56 }, { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff } },
++    };
++    for (int i = 0; i < 2; i++) {
++        char m[160]; u32 len = 16;
++        struct { u8 family, pad; u16 type; int index; u32 flags, change; } *ifi = (void *)(m + len);
++        ifi->family = 0; ifi->pad = 0; ifi->type = L[i].type; ifi->index = L[i].index; ifi->flags = L[i].flags; ifi->change = 0;
++        len += 16;
++        nl_attr(m, &len, 3 /*IFLA_IFNAME*/, L[i].name, (u16)(slen(L[i].name) + 1));
++        nl_attr(m, &len, 4 /*IFLA_MTU*/, &L[i].mtu, 4);
++        nl_attr(m, &len, 1 /*IFLA_ADDRESS*/, L[i].mac, 6);
++        nl_attr(m, &len, 2 /*IFLA_BROADCAST*/, L[i].bc, 6);
++        nl_put(peer, req, 16 /*RTM_NEWLINK*/, m, len);
++    }
++}
++static void nl_addrs(int peer, const struct aemu_nlmsghdr *req) {
++    static const struct { const char *name; int index; u8 prefix, flags, scope; u8 ip[4], bc[4]; } A[2] = {
++        { "lo", 1, 8, 0x80, 254, { 127, 0, 0, 1 }, { 0 } },
++        { "eth0", 2, 24, 0x80, 0, { 10, 0, 2, 15 }, { 10, 0, 2, 255 } },
++    };
++    for (int i = 0; i < 2; i++) {
++        char m[128]; u32 len = 16;
++        struct { u8 family, prefix, flags, scope; u32 index; } *ifa = (void *)(m + len);
++        ifa->family = 2; ifa->prefix = A[i].prefix; ifa->flags = A[i].flags; ifa->scope = A[i].scope; ifa->index = (u32)A[i].index;
++        len += 8;
++        nl_attr(m, &len, 1 /*IFA_ADDRESS*/, A[i].ip, 4);
++        nl_attr(m, &len, 2 /*IFA_LOCAL*/, A[i].ip, 4);
++        if (A[i].bc[0]) nl_attr(m, &len, 4 /*IFA_BROADCAST*/, A[i].bc, 4);
++        nl_attr(m, &len, 3 /*IFA_LABEL*/, A[i].name, (u16)(slen(A[i].name) + 1));
++        nl_put(peer, req, 20 /*RTM_NEWADDR*/, m, len);
++    }
++}
++
+ // Every request gets the answer that lets its sender go on: a dump ends at once (nothing to list), a request that
+@@ -453,10 +501,13 @@
+ static void nl_handle_send(int fd, const void *buf, u64 len) {
+     int peer = nl_find_peer(fd);
++    int route = 0;
++    for (int i = 0; i < MAX_NL; i++) if (g_nl[i].fd == fd) route = g_nl[i].route;
+     if (!buf || peer < 0) return;
+@@ -472,6 +523,8 @@
+         m.hdr.seq = req->seq; m.hdr.pid = req->pid;
+         if ((req->flags & 0x300) == 0x300) {        // NLM_F_DUMP
++            if (route && req->type == 18 /*RTM_GETLINK*/) nl_links(peer, req);
++            if (route && req->type == 22 /*RTM_GETADDR*/) nl_addrs(peer, req);
+             m.hdr.len = sizeof m.hdr + 4; m.hdr.type = 3 /*NLMSG_DONE*/; m.hdr.flags = 2 /*NLM_F_MULTI*/;
+@@ -1167,6 +1220,9 @@
+             if (S4(NR_socketpair, 1 /*AF_UNIX*/, 2 /*SOCK_DGRAM*/ | (a[1] & 02004000), 0, (long)sv) == 0) {
+                 nl_register(sv[0], sv[1]);
++                // a routing socket (NETLINK_ROUTE, protocol 0) is the one the framework lists the interfaces with:
++                // the engine answers its two dumps (the links and the addresses) with the stand-in's eth0.
++                if (a[2] == 0) for (int i = 0; i < MAX_NL; i++) if (g_nl[i].fd == sv[0]) g_nl[i].route = 1;
+                 // sock_diag from Java (ConnectivityService of 14 closing the sockets of a firewall chain) sends its
